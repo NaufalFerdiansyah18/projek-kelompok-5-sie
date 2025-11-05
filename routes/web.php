@@ -42,3 +42,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 // UMKM Routes
 Route::resource('umkm', UmkmController::class);
+Route::resource('products', \App\Http\Controllers\ProductController::class);
