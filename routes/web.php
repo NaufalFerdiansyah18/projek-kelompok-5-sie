@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UmkmController;
-
+use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -31,14 +31,24 @@ Route::get('/home', [HomeController::class, 'index'])->name ('home');
 Route::post('question/store', [QuestionController::class, 'store'])
     ->name('question.store');
 
-Route::resource('pelanggan', PelangganController::class);
-
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/pelanggan', [AdminController::class, 'pelangganIndex'])->name('pelanggan.index');
-    Route::get('/pelanggan/create', [AdminController::class, 'pelangganCreate'])->name('pelanggan.create');
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard-dasher');
+    })->name('dashboard');
+    
+    // Pelanggan Routes
+    Route::resource('pelanggan', PelangganController::class);
 });
 
 // UMKM Routes
 Route::resource('umkm', UmkmController::class);
+
+Route::resource('user', UserController::class);
+
+// AdminLTE Test Route
+Route::get('/adminlte-test', function () {
+    return view('admin.adminlte-test');
+})->name('adminlte.test');
+
+Route::resource('products', \App\Http\Controllers\ProductController::class);
