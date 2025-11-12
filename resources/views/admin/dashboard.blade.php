@@ -43,7 +43,11 @@
 <body>
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
         <a class="navbar-brand me-lg-5" href="{{ route('admin.dashboard') }}">
+<<<<<<< HEAD
             <img class="navbar-brand-dark" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" /> 
+=======
+            <img class="navbar-brand-dark" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" />
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33
             <img class="navbar-brand-light" src="{{ asset('assets-admin/img/brand/dark.svg') }}" alt="Volt logo" />
         </a>
         <div class="d-flex align-items-center">
@@ -129,6 +133,10 @@
                         <span class="sidebar-text">User</span>
                     </a>
                 </li>
+<<<<<<< HEAD
+=======
+                
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33
             </ul>
         </div>
     </nav>
@@ -235,7 +243,11 @@
                                     <h3 class="fw-extrabold mb-2">2,350</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">
+<<<<<<< HEAD
                                     Feb 1 - Apr 1, 
+=======
+                                    Feb 1 - Apr 1,
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33
                                     <svg class="icon icon-xxs text-gray-400 ms-1 me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
@@ -270,7 +282,11 @@
                                     <h3 class="fw-extrabold mb-2">$53,000</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">
+<<<<<<< HEAD
                                     Feb 1 - Apr 1, 
+=======
+                                    Feb 1 - Apr 1,
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33
                                     <svg class="icon icon-xxs text-gray-400 ms-1 me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
@@ -305,7 +321,11 @@
                                     <h3 class="fw-extrabold mb-2">50.88%</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">
+<<<<<<< HEAD
                                     Feb 1 - Apr 1, 
+=======
+                                    Feb 1 - Apr 1,
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33
                                     <svg class="icon icon-xxs text-gray-400 ms-1 me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
@@ -455,4 +475,8 @@
 
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33

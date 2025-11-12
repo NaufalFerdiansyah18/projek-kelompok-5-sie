@@ -8,6 +8,11 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\WargaController;
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,6 +57,7 @@ Route::get('/adminlte-test', function () {
     return view('admin.adminlte-test');
 })->name('adminlte.test');
 
+<<<<<<< HEAD
 Route::resource('products', \App\Http\Controllers\ProductController::class);
 
 
@@ -89,3 +95,8 @@ Route::get('/service', function () {
 Route::get('/testimonial', function () {
     return view('koppee.testimonial');
 });
+=======
+Route::resource('produk', \App\Http\Controllers\ProdukController::class);
+
+Route::resource('warga', \App\Http\Controllers\WargaController::class);
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33
