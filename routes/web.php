@@ -8,6 +8,7 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\WargaController;
 
@@ -54,6 +55,45 @@ Route::get('/adminlte-test', function () {
     return view('admin.adminlte-test');
 })->name('adminlte.test');
 
+Route::resource('products', \App\Http\Controllers\ProductController::class);
+
+
+// Rute untuk Homepage (/)
+Route::get('/', function () {
+    return view('koppee.index'); // <-- Memanggil views/koppee/index.blade.php
+});
+
+// Rute untuk halaman 'About' (/about)
+Route::get('/about', function () {
+    return view('koppee.about'); // <-- Memanggil views/koppee/about.blade.php
+});
+
+// Rute untuk halaman 'Contact' (/contact)
+Route::get('/contact', function () {
+    return view('koppee.contact');
+});
+
+// Rute untuk halaman 'Menu' (/menu)
+Route::get('/menu', function () {
+    return view('koppee.menu');
+});
+
+// Rute untuk halaman 'Reservation' (/reservation)
+Route::get('/reservation', function () {
+    return view('koppee.reservation');
+});
+
+// Rute untuk halaman 'Service' (/service)
+Route::get('/service', function () {
+    return view('koppee.service');
+});
+
+// Rute untuk halaman 'Testimonial' (/testimonial)
+Route::get('/testimonial', function () {
+    return view('koppee.testimonial');
+});
+
 Route::resource('produk', \App\Http\Controllers\ProdukController::class);
 
 Route::resource('warga', \App\Http\Controllers\WargaController::class);
+

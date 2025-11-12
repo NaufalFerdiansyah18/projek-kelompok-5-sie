@@ -6,6 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+<<<<<<< HEAD
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+{
+    Schema::create('products', function (Blueprint $table) {
+        $table->bigIncrements('id');
+        $table->string('name');
+        $table->integer('price');
+        $table->text('description')->nullable();
+        $table->string('image')->nullable();
+        $table->timestamps();
+    });
+}
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('products');
+    }
+
+=======
     public function up(): void
     {
         Schema::create('produk', function (Blueprint $table) {
@@ -30,4 +55,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('produk');
     }
+>>>>>>> fe8a477c8b7ad5e754c726be93f44b3b629edc33
 };
