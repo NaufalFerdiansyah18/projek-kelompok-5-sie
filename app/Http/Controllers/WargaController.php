@@ -8,12 +8,13 @@ use App\Models\Warga;
 class WargaController extends Controller
 {
     /**
-     * Tampilkan semua data warga.
+     * Tampilkan semua data warga dengan pagination.
      */
     public function index()
     {
-        $wargas = Warga::all();
-        return view('warga.index', compact('wargas'));
+        // Mengambil data warga 10 per halaman
+        $warga = Warga::paginate(10);
+        return view('warga.index', compact('warga'));
     }
 
     /**

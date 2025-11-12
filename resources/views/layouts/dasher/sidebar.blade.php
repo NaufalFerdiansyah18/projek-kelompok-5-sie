@@ -59,6 +59,16 @@
                     <span class="text">Produk</span>
                 </a>
             </li>
+            <!-- User -->
+            <li class="nav-item">
+                <a href="{{ route('warga.index') }}" class="nav-link {{ request()->routeIs('warga.*') ? 'active' : '' }}">
+                    <span class="nav-icon">
+                        <i class="ti ti-user" style="font-size: 20px;"></i>
+                    </span>
+                    <span class="text">Warga</span>
+                </a>
+            </li>
+
 
             <!-- Divider -->
             <li class="nav-item">

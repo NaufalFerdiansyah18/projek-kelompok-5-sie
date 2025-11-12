@@ -35,9 +35,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h6 class="text-muted mb-2">Revenue</h6>
-                            <h2 class="mb-0">$53,000</h2>
+                            <h2 class="mb-0">$100000,000</h2>
                             <small class="text-success">
-                                <i class="ti ti-arrow-up"></i> 28% from last month
+                                <i class="ti ti-arrow-up"></i> 99999999% from last month
                             </small>
                         </div>
                         <div class="icon-shape bg-success-subtle text-success rounded-circle" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
@@ -133,6 +133,9 @@
                         </a>
                         <a href="{{ route('umkm.create') }}" class="btn btn-outline-primary">
                             <i class="ti ti-building-store me-2"></i> Add UMKM
+                        </a>
+                         <a href="{{ route('warga.create') }}" class="btn btn-outline-primary">
+                            <i class="ti ti-user-plus me-2"></i> Add Warga
                         </a>
                     </div>
                 </div>

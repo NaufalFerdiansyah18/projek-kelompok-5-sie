@@ -9,6 +9,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\WargaController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -53,3 +55,5 @@ Route::get('/adminlte-test', function () {
 })->name('adminlte.test');
 
 Route::resource('produk', \App\Http\Controllers\ProdukController::class);
+
+Route::resource('warga', \App\Http\Controllers\WargaController::class);
