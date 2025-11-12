@@ -7,7 +7,7 @@
                 <span class="fw-bold fs-4 site-logo-text">Dasher</span>
             </a>
         </div>
-        
+
         <!-- Navigation Menu -->
         <ul class="navbar-nav flex-column">
             <!-- Dashboard -->
@@ -19,7 +19,7 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            
+
             <!-- Pelanggan -->
             <li class="nav-item">
                 <a href="{{ route('admin.pelanggan.index') }}" class="nav-link {{ request()->routeIs('admin.pelanggan.*') ? 'active' : '' }}">
@@ -29,7 +29,7 @@
                     <span class="text">Pelanggan</span>
                 </a>
             </li>
-            
+
             <!-- UMKM -->
             <li class="nav-item">
                 <a href="{{ route('umkm.index') }}" class="nav-link {{ request()->routeIs('umkm.*') ? 'active' : '' }}">
@@ -39,7 +39,7 @@
                     <span class="text">UMKM</span>
                 </a>
             </li>
-            
+
             <!-- User -->
             <li class="nav-item">
                 <a href="{{ route('user.index') }}" class="nav-link {{ request()->routeIs('user.*') ? 'active' : '' }}">
@@ -49,23 +49,23 @@
                     <span class="text">User</span>
                 </a>
             </li>
-            
+
             <!-- Products -->
             <li class="nav-item">
-                <a href="{{ route('products.index') }}" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
+                <a href="{{ route('produk.index') }}" class="nav-link {{ request()->routeIs('produk.*') ? 'active' : '' }}">
                     <span class="nav-icon">
                         <i class="ti ti-shopping-bag" style="font-size: 20px;"></i>
                     </span>
-                    <span class="text">Products</span>
+                    <span class="text">Produk</span>
                 </a>
             </li>
-            
+
             <!-- Divider -->
             <li class="nav-item">
                 <div class="nav-heading">Pages</div>
                 <hr class="mx-5 nav-line mb-1">
             </li>
-            
+
             <!-- Upgrade UI Card -->
             <li class="nav-item">
                 <div class="text-center py-5 upgrade-ui">

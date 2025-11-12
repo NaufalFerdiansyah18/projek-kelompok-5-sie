@@ -19,7 +19,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            
+
             <!-- Pelanggan -->
             <li class="nav-item">
                 <a href="{{ route('admin.pelanggan.index') }}" class="nav-link {{ request()->routeIs('admin.pelanggan.*') ? 'active' : '' }}">
@@ -27,7 +27,7 @@
                     <span>Pelanggan</span>
                 </a>
             </li>
-            
+
             <!-- UMKM -->
             <li class="nav-item">
                 <a href="{{ route('umkm.index') }}" class="nav-link {{ request()->routeIs('umkm.*') ? 'active' : '' }}">
@@ -35,7 +35,7 @@
                     <span>UMKM</span>
                 </a>
             </li>
-            
+
             <!-- User -->
             <li class="nav-item">
                 <a href="{{ route('user.index') }}" class="nav-link {{ request()->routeIs('user.*') ? 'active' : '' }}">
@@ -43,12 +43,12 @@
                     <span>User</span>
                 </a>
             </li>
-            
+
             <!-- Products -->
             <li class="nav-item">
-                <a href="{{ route('products.index') }}" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
+                <a href="{{ route('produk.index') }}" class="nav-link {{ request()->routeIs('produk.*') ? 'active' : '' }}">
                     <i class="ti ti-shopping-bag me-2" style="font-size: 20px;"></i>
-                    <span>Products</span>
+                    <span>Produk</span>
                 </a>
             </li>
         </ul>

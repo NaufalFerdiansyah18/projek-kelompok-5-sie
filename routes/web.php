@@ -8,6 +8,7 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProdukController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -36,7 +37,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard-dasher');
     })->name('dashboard');
-    
+
     // Pelanggan Routes
     Route::resource('pelanggan', PelangganController::class);
 });
@@ -51,4 +52,4 @@ Route::get('/adminlte-test', function () {
     return view('admin.adminlte-test');
 })->name('adminlte.test');
 
-Route::resource('products', \App\Http\Controllers\ProductController::class);
+Route::resource('produk', \App\Http\Controllers\ProdukController::class);

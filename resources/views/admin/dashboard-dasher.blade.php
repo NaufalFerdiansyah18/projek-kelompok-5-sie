@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-12 col-sm-6 col-xl-4">
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
@@ -47,14 +47,14 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-12 col-sm-6 col-xl-4">
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h6 class="text-muted mb-2">Products</h6>
-                            <h2 class="mb-0">{{ \App\Models\Product::count() }}</h2>
+                            <h2 class="mb-0">{{ \App\Models\Produk::count() }}</h2>
                             <small class="text-info">
                                 <i class="ti ti-package"></i> Total products
                             </small>
@@ -117,7 +117,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-12 col-xl-4">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white border-bottom">
@@ -125,7 +125,7 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <a href="{{ route('products.create') }}" class="btn btn-primary">
+                        <a href="{{ route('produk.create') }}" class="btn btn-primary">
                             <i class="ti ti-plus me-2"></i> Add Product
                         </a>
                         <a href="{{ route('user.create') }}" class="btn btn-outline-primary">

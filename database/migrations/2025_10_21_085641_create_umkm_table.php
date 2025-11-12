@@ -6,32 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('umkm', function (Blueprint $table) {
-            $table->increments('umkm_id');
+            $table->bigIncrements('umkm_id'); // pakai big integer
             $table->string('nama_usaha', 200);
-            $table->unsignedInteger('pemilik_warga_id');
+            $table->unsignedBigInteger('pemilik_warga_id');
             $table->text('alamat');
             $table->string('rt', 10);
             $table->string('rw', 10);
             $table->string('kategori', 100);
             $table->string('kontak', 50);
             $table->text('deskripsi')->nullable();
-            $table->string('logo_foto_usaha')->nullable(); // untuk menyimpan path file
+            $table->string('logo_foto_usaha')->nullable();
             $table->timestamps();
 
-            // Foreign key constraint (jika ada tabel warga)
-            // $table->foreign('pemilik_warga_id')->references('warga_id')->on('warga');
+            // Jika nanti tabel warga sudah ada
+            // $table->foreign('pemilik_warga_id')->references('warga_id')->on('warga')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('umkm');

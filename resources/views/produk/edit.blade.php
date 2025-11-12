@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Products</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('produk.index') }}">produk</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
             </ol>
         </nav>
@@ -30,13 +30,13 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
-                    <form action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('produk.update', $produk) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        @include('products.partials.form')
+                        @include('produk.partials.form')
                         <div class="d-flex justify-content-end mt-4">
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('products.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                            <a href="{{ route('produk.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
                         </div>
                     </form>
                 </div>
