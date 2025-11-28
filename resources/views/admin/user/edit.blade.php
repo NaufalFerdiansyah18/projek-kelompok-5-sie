@@ -2,6 +2,15 @@
 
 @section('title', 'Edit User')
 
+@push('styles')
+<style>
+    .img-thumbnail {
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+    }
+</style>
+@endpush
+
 @section('content')
     <div class="mb-6">
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -19,12 +28,27 @@
 
     <div class="card border-0 shadow-sm">
         <div class="card-body">
-            <form action="{{ route('user.update', $dataUser->id) }}" method="POST">
+            <form action="{{ route('user.update', $dataUser->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="row mb-4">
                     <div class="col-lg-6 col-sm-12">
+                        <!-- Profile Picture -->
+                        <div class="mb-3">
+                            <label for="profile_picture" class="form-label">Foto Profil</label>
+                            @if($dataUser->profile_picture)
+                                <div class="mb-2">
+                                    <img src="{{ Storage::url($dataUser->profile_picture) }}" alt="Profile Picture" class="img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
+                                </div>
+                            @endif
+                            <input name="profile_picture" type="file" id="profile_picture" class="form-control @error('profile_picture') is-invalid @enderror" accept="image/*">
+                            <small class="form-text text-muted">Format: JPEG, PNG, JPG, GIF. Maksimal 2MB</small>
+                            @error('profile_picture')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <!-- Nama -->
                         <div class="mb-3">
                             <label for="first_name" class="form-label">Nama <span class="text-danger">*</span></label>

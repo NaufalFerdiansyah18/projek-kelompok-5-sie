@@ -24,7 +24,42 @@
         </div>
     @endif
 
+    @php($filters = $filters ?? [])
     <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-bottom">
+            <form action="{{ route('admin.pelanggan.index') }}" method="GET" class="row g-3 align-items-end">
+                <div class="col-md-5 col-lg-4">
+                    <label class="form-label text-muted small">Cari Pelanggan</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="ti ti-search"></i></span>
+                        <input type="text" name="search" class="form-control" placeholder="Nama, email atau telepon" value="{{ $filters['search'] ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <label class="form-label text-muted small">Gender</label>
+                    <select name="gender" class="form-select">
+                        <option value="">Semua</option>
+                        <option value="Laki-laki" @selected(($filters['gender'] ?? '') === 'Laki-laki')>Laki-laki</option>
+                        <option value="Perempuan" @selected(($filters['gender'] ?? '') === 'Perempuan')>Perempuan</option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-lg-2 d-flex gap-2">
+                    <button type="submit" class="btn btn-success flex-fill">
+                        <i class="ti ti-filter me-1"></i> Terapkan
+                    </button>
+                    <a href="{{ route('admin.pelanggan.index') }}" class="btn btn-light border flex-fill">
+                        Reset
+                    </a>
+                </div>
+                @if(!empty($filters['search']))
+                <div class="col-12">
+                    <a href="{{ route('admin.pelanggan.index', !empty($filters['gender']) ? ['gender' => $filters['gender']] : []) }}" class="btn btn-link px-0 text-decoration-none">
+                        Bersihkan pencarian
+                    </a>
+                </div>
+                @endif
+            </form>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
@@ -47,7 +82,8 @@
                             <td>{{ $item->birthday ? \Carbon\Carbon::parse($item->birthday)->format('d/m/Y') : '-' }}</td>
                             <td>
                                 @if($item->gender)
-                                    <span class="badge bg-info">{{ $item->gender }}</span>
+                                    @php($genderLabel = $item->gender === 'Male' ? 'Laki-laki' : ($item->gender === 'Female' ? 'Perempuan' : $item->gender))
+                                    <span class="badge bg-info">{{ $genderLabel }}</span>
                                 @else
                                     <span class="text-muted">-</span>
                                 @endif
@@ -56,13 +92,16 @@
                             <td>{{ $item->phone ?? '-' }}</td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('admin.pelanggan.edit', $item) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('admin.pelanggan.show', $item) }}" class="btn btn-sm btn-info" title="Detail">
+                                        <i class="ti ti-eye"></i>
+                                    </a>
+                                    <a href="{{ route('admin.pelanggan.edit', $item) }}" class="btn btn-sm btn-warning" title="Edit">
                                         <i class="ti ti-edit"></i>
                                     </a>
                                     <form action="{{ route('admin.pelanggan.destroy', $item) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pelanggan ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Hapus">
                                             <i class="ti ti-trash"></i>
                                         </button>
                                     </form>
@@ -81,7 +120,7 @@
                                 <div class="d-flex justify-content-between align-items-center px-3">
                                     <div class="text-muted small">
                                         <i class="ti ti-info-circle me-1"></i>
-                                        Total Data: <strong>{{ count($dataPelanggan) }}</strong> Pelanggan
+                                        Total Data: <strong>{{ $dataPelanggan->total() }}</strong> Pelanggan
                                     </div>
                                     <div class="text-muted small">
                                         <i class="ti ti-calendar me-1"></i>
@@ -94,6 +133,16 @@
                 </table>
             </div>
         </div>
+        @if($dataPelanggan->hasPages())
+        <div class="card-footer bg-white border-top d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div class="text-muted small">
+                Menampilkan <b>{{ $dataPelanggan->firstItem() }}</b> hingga <b>{{ $dataPelanggan->lastItem() }}</b> dari <b>{{ $dataPelanggan->total() }}</b> data
+            </div>
+            <div class="pagination-wrapper mb-0">
+                {{ $dataPelanggan->onEachSide(1)->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+        @endif
     </div>
 @endsection
 

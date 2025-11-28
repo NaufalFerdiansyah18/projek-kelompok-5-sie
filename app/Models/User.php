@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Concerns\HasSearch;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasSearch;
 
     protected $table = 'users';
     protected $primaryKey = 'id';
@@ -18,6 +18,12 @@ class User extends Authenticatable
         'first_name',
         'email',
         'password',
+        'profile_picture',
+    ];
+
+    protected array $searchableColumns = [
+        'first_name',
+        'email',
     ];
 
     protected $hidden = [

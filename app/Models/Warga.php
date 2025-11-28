@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasSearch;
 
 class Warga extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSearch;
 
     protected $table = 'warga';
     protected $primaryKey = 'warga_id';
@@ -23,5 +24,11 @@ class Warga extends Model
         'email',
     ];
 
-
+    protected array $searchableColumns = [
+        'no_ktp',
+        'nama',
+        'pekerjaan',
+        'telp',
+        'email',
+    ];
 }

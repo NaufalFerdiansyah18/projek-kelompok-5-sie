@@ -19,7 +19,7 @@
 
     <div class="card border-0 shadow-sm">
         <div class="card-body">
-            <form action="{{ route('admin.pelanggan.store') }}" method="POST">
+            <form action="{{ route('admin.pelanggan.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-4">
                     <div class="col-lg-6 col-sm-12">
@@ -57,9 +57,8 @@
                             <label for="gender" class="form-label">Gender</label>
                             <select name="gender" id="gender" class="form-select @error('gender') is-invalid @enderror">
                                 <option value="">-- Pilih --</option>
-                                <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
-                                <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
-                                <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
+                                <option value="Laki-laki" @selected(in_array(old('gender'), ['Laki-laki', 'Male']))>Laki-laki</option>
+                                <option value="Perempuan" @selected(in_array(old('gender'), ['Perempuan', 'Female']))>Perempuan</option>
                             </select>
                             @error('gender')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -80,6 +79,16 @@
                             <label for="phone" class="form-label">Phone</label>
                             <input name="phone" type="text" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
                             @error('phone')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Files -->
+                        <div class="mb-3">
+                            <label for="files" class="form-label">Files</label>
+                            <input name="files[]" type="file" id="files" class="form-control @error('files.*') is-invalid @enderror" multiple accept="image/*,.pdf,.doc,.docx">
+                            <small class="form-text text-muted">Pilih multiple files (Gambar, PDF, DOC, DOCX). Maksimal 5MB per file</small>
+                            @error('files.*')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

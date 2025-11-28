@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasSearch;
 
 class Produk extends Model
 {
+    use HasSearch;
     protected $table = 'produk';
     protected $primaryKey = 'produk_id';
 
@@ -15,6 +17,12 @@ class Produk extends Model
         'deskripsi',
         'harga',
         'stok',
+        'status',
+    ];
+
+    protected array $searchableColumns = [
+        'nama_produk',
+        'deskripsi',
         'status',
     ];
 

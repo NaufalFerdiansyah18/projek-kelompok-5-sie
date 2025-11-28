@@ -24,7 +24,34 @@
         </div>
     @endif
 
+    @php($filters = $filters ?? [])
     <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-bottom">
+            <form action="{{ route('produk.index') }}" method="GET" class="row g-3 align-items-end">
+                <div class="col-md-8">
+                    <label class="form-label text-muted small">Cari Produk</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="ti ti-search"></i></span>
+                        <input type="text" name="search" class="form-control" placeholder="Nama produk, status atau deskripsi" value="{{ $filters['search'] ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex gap-2">
+                    <button type="submit" class="btn btn-success flex-fill">
+                        <i class="ti ti-filter me-1"></i> Terapkan
+                    </button>
+                    <a href="{{ route('produk.index') }}" class="btn btn-light border flex-fill">
+                        Reset
+                    </a>
+                </div>
+                @if(!empty($filters['search']))
+                    <div class="col-12">
+                        <a href="{{ route('produk.index') }}" class="btn btn-link px-0 text-decoration-none">
+                            Bersihkan pencarian
+                        </a>
+                    </div>
+                @endif
+            </form>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
@@ -80,8 +107,7 @@
                                 <div class="d-flex justify-content-between align-items-center px-3">
                                     <div class="text-muted small">
                                         <i class="ti ti-info-circle me-1"></i>
-                                        Total Data: <strong>{{ $produk
-                                    ->total() }}</strong> Product
+                                        Total Data: <strong>{{ $produk->total() }}</strong> Product
                                     </div>
                                     <div class="text-muted small">
                                         <i class="ti ti-calendar me-1"></i>
@@ -93,22 +119,17 @@
                     </tfoot>
                 </table>
             </div>
-            @if($produk
-        ->hasPages())
-            <div class="card-footer bg-white border-top d-flex align-items-center justify-content-between">
-                <div class="text-muted small">
-                    Showing <b>{{ $produk
-                ->firstItem() }}</b> to <b>{{ $produk
-                ->lastItem() }}</b> of <b>{{ $produk
-                ->total() }}</b> entries
-                </div>
-                <div>
-                    {{ $produk
-                ->links() }}
-                </div>
-            </div>
-            @endif
         </div>
+        @if($produk->hasPages())
+        <div class="card-footer bg-white border-top d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div class="text-muted small">
+                Menampilkan <b>{{ $produk->firstItem() }}</b> hingga <b>{{ $produk->lastItem() }}</b> dari <b>{{ $produk->total() }}</b> data
+            </div>
+            <div class="pagination-wrapper mb-0">
+                {{ $produk->onEachSide(1)->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+        @endif
     </div>
 @endsection
 

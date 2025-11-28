@@ -24,7 +24,42 @@
 </div>
 @endif
 
+@php($filters = $filters ?? [])
 <div class="card border-0 shadow-sm">
+    <div class="card-header bg-white border-bottom">
+        <form action="{{ route('warga.index') }}" method="GET" class="row g-3 align-items-end">
+            <div class="col-md-5 col-lg-4">
+                <label class="form-label text-muted small">Cari Data Warga</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="ti ti-search"></i></span>
+                    <input type="text" name="search" class="form-control" placeholder="Cari nama, NIK, email..." value="{{ $filters['search'] ?? '' }}">
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <label class="form-label text-muted small">Filter Gender</label>
+                <select name="gender" class="form-select">
+                    <option value="">Semua</option>
+                    <option value="Laki-laki" @selected(($filters['gender'] ?? '') === 'Laki-laki')>Laki-laki</option>
+                    <option value="Perempuan" @selected(($filters['gender'] ?? '') === 'Perempuan')>Perempuan</option>
+                </select>
+            </div>
+            <div class="col-md-3 col-lg-2 d-flex gap-2">
+                <button type="submit" class="btn btn-success flex-fill">
+                    <i class="ti ti-filter me-1"></i> Terapkan
+                </button>
+                <a href="{{ route('warga.index') }}" class="btn btn-light border flex-fill">
+                    Reset
+                </a>
+            </div>
+            @if(!empty($filters['search']))
+            <div class="col-12">
+                <a href="{{ route('warga.index', !empty($filters['gender']) ? ['gender' => $filters['gender']] : []) }}" class="btn btn-link px-0 text-decoration-none">
+                        Bersihkan pencarian
+                    </a>
+                </div>
+            @endif
+        </form>
+    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover align-middle">
@@ -47,7 +82,15 @@
                         <td>{{ $warga->firstItem() + $index }}</td>
                         <td>{{ $item->no_ktp }}</td>
                         <td>{{ $item->nama }}</td>
-                        <td>{{ $item->jenis_kelamin }}</td>
+                        <td>
+                            @if($item->jenis_kelamin)
+                                <span class="badge bg-info">
+                                    {{ $item->jenis_kelamin }}
+                                </span>
+                            @else
+                                <span class="text-muted">-</span>
+                            @endif
+                        </td>
                         <td>{{ $item->agama }}</td>
                         <td>{{ $item->pekerjaan ?? '-' }}</td>
                         <td>{{ $item->telp ?? '-' }}</td>
@@ -91,18 +134,17 @@
                 </tfoot>
             </table>
         </div>
-
-        @if($warga->hasPages())
-        <div class="card-footer bg-white border-top d-flex align-items-center justify-content-between">
-            <div class="text-muted small">
-                Showing <b>{{ $warga->firstItem() }}</b> to <b>{{ $warga->lastItem() }}</b> of <b>{{ $warga->total() }}</b> entries
-            </div>
-            <div>
-                {{ $warga->links() }}
-            </div>
-        </div>
-        @endif
     </div>
+    @if($warga->hasPages())
+    <div class="card-footer bg-white border-top d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div class="text-muted small">
+            Menampilkan <b>{{ $warga->firstItem() }}</b> hingga <b>{{ $warga->lastItem() }}</b> dari <b>{{ $warga->total() }}</b> data
+        </div>
+        <div class="pagination-wrapper mb-0">
+            {{ $warga->onEachSide(1)->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
+    @endif
 </div>
 @endsection
 

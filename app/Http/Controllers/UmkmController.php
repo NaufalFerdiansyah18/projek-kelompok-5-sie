@@ -11,9 +11,28 @@ class UmkmController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataUmkm'] = Umkm::all();
+        $query = Umkm::query()->orderByDesc('umkm_id');
+
+        $search = $request->input('search');
+        $query->search($search);
+
+        if ($request->filled('kategori')) {
+            $query->where('kategori', $request->input('kategori'));
+        }
+
+        $filters = [
+            'search' => $search,
+            'kategori' => $request->input('kategori'),
+        ];
+
+        $activeFilters = array_filter($filters, fn ($value) => $value !== null && $value !== '');
+
+        $data['dataUmkm'] = $query->paginate(3)->appends($activeFilters);
+        $data['filters'] = $filters;
+        $data['categories'] = Umkm::select('kategori')->whereNotNull('kategori')->distinct()->orderBy('kategori')->pluck('kategori');
+
         return view('admin.umkm.index', $data);
     }
 

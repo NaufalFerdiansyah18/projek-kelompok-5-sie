@@ -12,10 +12,22 @@ class ProdukController extends Controller
     /**
      * Tampilkan daftar produk dengan pagination
      */
-    public function index()
+    public function index(Request $request)
     {
-        $produk = Produk::with('umkm')->latest()->paginate(10);
-        return view('produk.index', compact('produk'));
+        $query = Produk::with('umkm')->latest();
+
+        $search = $request->input('search');
+        $query->search($search);
+
+        $filters = [
+            'search' => $search,
+        ];
+
+        $activeFilters = array_filter($filters, fn ($value) => $value !== null && $value !== '');
+
+        $produk = $query->paginate(10)->appends($activeFilters);
+
+        return view('produk.index', compact('produk', 'filters'));
     }
 
     /**

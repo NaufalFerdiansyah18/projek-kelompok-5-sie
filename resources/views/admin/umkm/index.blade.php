@@ -24,7 +24,43 @@
         </div>
     @endif
 
+    @php($filters = $filters ?? [])
     <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-bottom">
+            <form action="{{ route('umkm.index') }}" method="GET" class="row g-3 align-items-end">
+                <div class="col-md-6">
+                    <label class="form-label text-muted small">Cari Nama Usaha / Alamat</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="ti ti-search"></i></span>
+                        <input type="text" name="search" class="form-control" placeholder="Masukkan kata kunci..." value="{{ $filters['search'] ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label text-muted small">Kategori</label>
+                    <select name="kategori" class="form-select">
+                        <option value="">Semua</option>
+                        @foreach($categories ?? [] as $kategori)
+                            <option value="{{ $kategori }}" @selected(($filters['kategori'] ?? '') === $kategori)>{{ $kategori }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex gap-2">
+                    <button type="submit" class="btn btn-success flex-fill">
+                        <i class="ti ti-filter me-1"></i> Terapkan
+                    </button>
+                    <a href="{{ route('umkm.index') }}" class="btn btn-light border flex-fill">
+                        Reset
+                    </a>
+                </div>
+                @if(!empty($filters['search']))
+                    <div class="col-12">
+                        <a href="{{ route('umkm.index', !empty($filters['kategori']) ? ['kategori' => $filters['kategori']] : []) }}" class="btn btn-link px-0 text-decoration-none">
+                            Bersihkan pencarian
+                        </a>
+                    </div>
+                @endif
+            </form>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
@@ -85,7 +121,7 @@
                                 <div class="d-flex justify-content-between align-items-center px-3">
                                     <div class="text-muted small">
                                         <i class="ti ti-info-circle me-1"></i>
-                                        Total Data: <strong>{{ count($dataUmkm) }}</strong> UMKM
+                                        Total Data: <strong>{{ $dataUmkm->total() }}</strong> UMKM
                                     </div>
                                     <div class="text-muted small">
                                         <i class="ti ti-calendar me-1"></i>
@@ -98,6 +134,16 @@
                 </table>
             </div>
         </div>
+        @if($dataUmkm->hasPages())
+        <div class="card-footer bg-white border-top d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div class="text-muted small">
+                Menampilkan <b>{{ $dataUmkm->firstItem() }}</b> hingga <b>{{ $dataUmkm->lastItem() }}</b> dari <b>{{ $dataUmkm->total() }}</b> data
+            </div>
+            <div class="pagination-wrapper mb-0">
+                {{ $dataUmkm->onEachSide(1)->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+        @endif
     </div>
 @endsection
 

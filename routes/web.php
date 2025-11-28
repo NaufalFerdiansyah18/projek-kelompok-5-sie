@@ -49,11 +49,6 @@ Route::resource('umkm', UmkmController::class);
 
 Route::resource('user', UserController::class);
 
-// AdminLTE Test Route
-Route::get('/adminlte-test', function () {
-    return view('admin.adminlte-test');
-})->name('adminlte.test');
-
 Route::resource('produk', \App\Http\Controllers\ProdukController::class);
 
 Route::resource('warga', \App\Http\Controllers\WargaController::class);

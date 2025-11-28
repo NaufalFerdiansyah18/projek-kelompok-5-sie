@@ -10,11 +10,28 @@ class WargaController extends Controller
     /**
      * Tampilkan semua data warga dengan pagination.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil data warga 10 per halaman
-        $warga = Warga::paginate(10);
-        return view('warga.index', compact('warga'));
+        $query = Warga::query()->orderByDesc('warga_id');
+
+        if ($request->filled('gender')) {
+            $query->where('jenis_kelamin', $request->input('gender'));
+        }
+
+        $search = $request->input('search');
+        $query->search($search);
+
+        $filters = [
+            'gender' => $request->input('gender'),
+            'search' => $search,
+        ];
+
+        $activeFilters = array_filter($filters, fn ($value) => $value !== null && $value !== '');
+
+        $warga = $query->paginate(10)->appends($activeFilters);
+        $filters['search'] = $search;
+
+        return view('warga.index', compact('warga', 'filters'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
 class UserController extends Controller
@@ -11,10 +12,23 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataUser'] = User::all();
-		return view('admin.user.index',$data);
+        $query = User::query()->orderByDesc('id');
+
+        $search = $request->input('search');
+        $query->search($search);
+
+        $activeFilters = array_filter([
+            'search' => $search,
+        ], fn ($value) => $value !== null && $value !== '');
+
+        $data['dataUser'] = $query->paginate(3)->appends($activeFilters);
+        $data['filters'] = [
+            'search' => $search,
+        ];
+
+        return view('admin.user.index', $data);
     }
 
     /**
@@ -75,6 +89,7 @@ class UserController extends Controller
             'first_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'nullable|min:6|confirmed',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $user->first_name = $request->first_name;
@@ -83,6 +98,18 @@ class UserController extends Controller
         // Update password hanya jika diisi
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
+        }
+
+        // Handle profile picture upload
+        if ($request->hasFile('profile_picture')) {
+            // Delete old profile picture if exists
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+            
+            // Store new profile picture
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $user->profile_picture = $path;
         }
 
         $user->save();
