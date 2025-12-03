@@ -41,7 +41,7 @@ class PelangganController extends Controller
 
 		Pelanggan::create($data);
 
-		return redirect()->route('pelanggan.index')->with('success','Penambahan Data Berhasil!');
+		return redirect()->route('admin.pelanggan.index')->with('success','Penambahan Data Berhasil!');
 }
 
 
@@ -56,20 +56,17 @@ class PelangganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Pelanggan $pelanggan)
     {
-        $data['dataPelanggan'] = Pelanggan::findOrFail($id);
-    return view('admin.pelanggan.edit', $data);
+        $data['dataPelanggan'] = $pelanggan;
+        return view('admin.pelanggan.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Pelanggan $pelanggan)
     {
-        $pelanggan_id = $id;
-        $pelanggan = Pelanggan::findOrFail($pelanggan_id);
-
         $pelanggan->first_name = $request->first_name;
         $pelanggan->last_name = $request->last_name;
         $pelanggan->birthday = $request->birthday;
@@ -78,17 +75,15 @@ class PelangganController extends Controller
         $pelanggan->phone = $request->phone;
 
         $pelanggan->save();
-        return redirect()->route('pelanggan.index')->with('success', 'Data Berhasil Diupdate!');
+        return redirect()->route('admin.pelanggan.index')->with('success', 'Data Berhasil Diupdate!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Pelanggan $pelanggan)
     {
-        $pelanggan = Pelanggan::findOrFail($id);
-
         $pelanggan->delete();
-        return redirect()->route('pelanggan.index')->with('success', 'Data Berhasil Dihapus!');
+        return redirect()->route('admin.pelanggan.index')->with('success', 'Data Berhasil Dihapus!');
     }
 }

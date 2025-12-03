@@ -143,7 +143,7 @@ PHP;
         }
 
         $modelVar = Str::camel($name);
-        $modelVarPlural = Str::plural($modelVar);
+        $modelVarPlural = Str::snake(Str::plural($name));               
 
         $rules = "";
         foreach ($fields as $field) {
@@ -258,7 +258,7 @@ PHP;
             \$data['$name'] = \$request->file('$name')->store('uploads', 'public');
         }
 
-        PHP;
+PHP;
         }
         return $code;
     }
@@ -278,7 +278,7 @@ PHP;
             \$data['$name'] = \$request->file('$name')->store('uploads', 'public');
         }
 
-        PHP;
+PHP;
         }
         return $code;
     }
@@ -295,7 +295,13 @@ PHP;
 
     protected \$fillable = [$fillableString];
 PHP;
-            $content = str_replace("use HasFactory;\n", "use HasFactory;$fillable\n", $content);
+            // Try to add after HasFactory first
+            if (str_contains($content, 'use HasFactory;')) {
+                $content = str_replace("use HasFactory;\n", "use HasFactory;$fillable\n", $content);
+            } else {
+                // If no HasFactory, add after the opening brace of the class, before any closing brace
+                $content = preg_replace('/(class\s+\w+\s+extends\s+Model\s*\{)/', '$1' . $fillable, $content);
+            }
             File::put($modelPath, $content);
         }
     }
@@ -342,102 +348,178 @@ PHP;
             $tbody .= "<td>{{ \$item->{$col['name']} }}</td>\n                        ";
         }
 
+        $colspan = count($columns) + ($imageField ? 2 : 1) + 1; // ID + image + columns + action
         return <<<BLADE
-@extends('adminlte::page')
+@extends('layouts.dasher.app')
 
 @section('title', '$title')
 
-@section('content_header')
-    <h1>$title</h1>
-@stop
-
 @section('content')
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <div class="card">
-        <div class="card-header">
-            <a href="{{ route('$table.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
-        </div>
-        <div class="card-body table-responsive">
-            <table id="crudTable" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th width="60">ID</th>
-                        {$thead}<th width="150">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @forelse(\${$table} as \$item)
-                    <tr>
-                        <td>{{ \$item->id }}</td>
-                        {$tbody}<td>
-                            <a href="{{ route('$table.show', \$item) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
-                            <a href="{{ route('$table.edit', \$item) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-                            <form action="{{ route('$table.destroy', \$item) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete?')">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                @empty
-                    <tr><td colspan="4">No data</td></tr>
-                @endforelse
-                </tbody>
-            </table>
-        </div>
-        <div class="card-footer">
-            {{-- pagination server side --}}
-            {{ \${$table}->links() }}
+    <div class="mb-6">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-2">$title</h1>
+                <p class="text-muted mb-0">Kelola data $title</p>
+            </div>
+            <div>
+                <a href="{{ route('$table.create') }}" class="btn btn-primary">
+                    <i class="ti ti-plus me-2"></i> Tambah {$name}
+                </a>
+            </div>
         </div>
     </div>
-@stop
 
-@section('js')
-    <script>
-        \$(function () {
-            // aktifkan datatable, tapi biarkan pagination Laravel tetap tampil
-            \$('#crudTable').DataTable({
-                "paging": false, // kita matikan paging datatables karena sudah pakai pagination Laravel
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "ordering":  true,
-                "info": false,
-                "searching": true
-            });
-        });
-    </script>
-@stop
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            {$thead}<th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse(\${$table} as \$item)
+                        <tr>
+                            <td>{{ \$item->id }}</td>
+                            {$tbody}<td>
+                                <div class="d-flex gap-2">
+                                    <a href="{{ route('$table.show', \$item) }}" class="btn btn-sm btn-info">
+                                        <i class="ti ti-eye"></i>
+                                    </a>
+                                    <a href="{{ route('$table.edit', \$item) }}" class="btn btn-sm btn-warning">
+                                        <i class="ti ti-edit"></i>
+                                    </a>
+                                    <form action="{{ route('$table.destroy', \$item) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="ti ti-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="$colspan" class="text-center">Tidak ada data</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                    <tfoot>
+                        <tr class="table-footer">
+                            <td colspan="$colspan" class="text-center py-3">
+                                <div class="d-flex justify-content-between align-items-center px-3">
+                                    <div class="text-muted small">
+                                        <i class="ti ti-info-circle me-1"></i>
+                                        Total Data: <strong>{{ \${$table}->total() }}</strong> {$name}
+                                    </div>
+                                    <div class="text-muted small">
+                                        <i class="ti ti-calendar me-1"></i>
+                                        Terakhir diperbarui: {{ now()->format('d M Y') }}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        @if(\${$table}->hasPages())
+        <div class="card-footer bg-white border-top d-flex align-items-center justify-content-between">
+            <div class="text-muted small">
+                Showing <b>{{ \${$table}->firstItem() }}</b> to <b>{{ \${$table}->lastItem() }}</b> of <b>{{ \${$table}->total() }}</b> entries
+            </div>
+            <div>
+                {{ \${$table}->links() }}
+            </div>
+        </div>
+        @endif
+    </div>
+@endsection
+
+@push('styles')
+<style>
+    .table-footer {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        border-top: 2px solid #059669;
+    }
+    
+    .table-footer td {
+        color: #065f46;
+        font-weight: 500;
+    }
+    
+    .table thead {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        border-bottom: 2px solid #059669;
+    }
+    
+    .table thead th {
+        color: #065f46;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        letter-spacing: 0.5px;
+        padding: 12px 16px;
+    }
+</style>
+@endpush
 BLADE;
     }
 
     protected function createView($name, $table)
     {
-        $title = "Create " . Str::headline($name);
+        $title = "Tambah " . Str::headline($name);
         return <<<BLADE
-@extends('adminlte::page')
+@extends('layouts.dasher.app')
 
 @section('title', '$title')
 
-@section('content_header')
-    <h1>$title</h1>
-@stop
-
 @section('content')
-    <div class="card">
+    <div class="mb-6">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-2">$title</h1>
+                <p class="text-muted mb-0">Form untuk menambahkan data {$name} baru</p>
+            </div>
+            <div>
+                <a href="{{ route('$table.index') }}" class="btn btn-outline-secondary">
+                    <i class="ti ti-arrow-left me-2"></i> Kembali
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm">
         <div class="card-body">
             <form action="{{ route('$table.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @include('$table.partials.form')
-                <button class="btn btn-primary">Save</button>
-                <a href="{{ route('$table.index') }}" class="btn btn-secondary">Back</a>
+                <div class="row mb-4">
+                    <div class="col-lg-6 col-sm-12">
+                        @include('$table.partials.form')
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ti ti-check me-2"></i> Simpan
+                    </button>
+                    <a href="{{ route('$table.index') }}" class="btn btn-outline-secondary">
+                        <i class="ti ti-x me-2"></i> Batal
+                    </a>
+                </div>
             </form>
         </div>
     </div>
-@stop
+@endsection
 BLADE;
     }
 
@@ -446,27 +528,47 @@ BLADE;
         $modelVar = Str::camel($name);
         $title = "Edit " . Str::headline($name);
         return <<<BLADE
-@extends('adminlte::page')
+@extends('layouts.dasher.app')
 
 @section('title', '$title')
 
-@section('content_header')
-    <h1>$title</h1>
-@stop
-
 @section('content')
-    <div class="card">
+    <div class="mb-6">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-2">$title</h1>
+                <p class="text-muted mb-0">Form untuk mengubah data {$name}</p>
+            </div>
+            <div>
+                <a href="{{ route('$table.index') }}" class="btn btn-outline-secondary">
+                    <i class="ti ti-arrow-left me-2"></i> Kembali
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm">
         <div class="card-body">
             <form action="{{ route('$table.update', \${$modelVar}) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                @include('$table.partials.form')
-                <button class="btn btn-primary">Update</button>
-                <a href="{{ route('$table.index') }}" class="btn btn-secondary">Back</a>
+                <div class="row mb-4">
+                    <div class="col-lg-6 col-sm-12">
+                        @include('$table.partials.form')
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ti ti-check me-2"></i> Update
+                    </button>
+                    <a href="{{ route('$table.index') }}" class="btn btn-outline-secondary">
+                        <i class="ti ti-x me-2"></i> Batal
+                    </a>
+                </div>
             </form>
         </div>
     </div>
-@stop
+@endsection
 BLADE;
     }
 
@@ -486,22 +588,39 @@ BLADE;
 
         $title = "Detail " . Str::headline($name);
         return <<<BLADE
-@extends('adminlte::page')
+@extends('layouts.dasher.app')
 
 @section('title', '$title')
 
-@section('content_header')
-    <h1>$title</h1>
-@stop
-
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            {$rows}
-            <a href="{{ route('$table.index') }}" class="btn btn-secondary">Back</a>
+    <div class="mb-6">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-2">$title</h1>
+                <p class="text-muted mb-0">Detail informasi {$name}</p>
+            </div>
+            <div>
+                <a href="{{ route('$table.index') }}" class="btn btn-outline-secondary">
+                    <i class="ti ti-arrow-left me-2"></i> Kembali
+                </a>
+            </div>
         </div>
     </div>
-@stop
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body">
+            {$rows}
+            <div class="mt-4">
+                <a href="{{ route('$table.edit', \${$modelVar}) }}" class="btn btn-warning">
+                    <i class="ti ti-edit me-2"></i> Edit
+                </a>
+                <a href="{{ route('$table.index') }}" class="btn btn-outline-secondary">
+                    <i class="ti ti-arrow-left me-2"></i> Kembali
+                </a>
+            </div>
+        </div>
+    </div>
+@endsection
 BLADE;
     }
 
@@ -525,42 +644,51 @@ BLADE;
 
         return match ($type) {
             'text' => <<<BLADE
-<div class="form-group mb-3">
-    <label for="$name">$label</label>
+<div class="mb-3">
+    <label for="$name" class="form-label">$label <span class="text-danger">*</span></label>
     <textarea name="$name" id="$name" rows="4"
-              class="form-control @error('$name') is-invalid @enderror">{{ old('$name', \${$modelVar}->$name ?? '') }}</textarea>
-    @error('$name') <div class="invalid-feedback">{{ \$message }}</div> @enderror
+              class="form-control @error('$name') is-invalid @enderror" required>{{ old('$name', \${$modelVar}->$name ?? '') }}</textarea>
+    @error('$name')
+        <div class="invalid-feedback">{{ \$message }}</div>
+    @enderror
 </div>
 BLADE,
             'integer', 'decimal' => <<<BLADE
-<div class="form-group mb-3">
-    <label for="$name">$label</label>
+<div class="mb-3">
+    <label for="$name" class="form-label">$label <span class="text-danger">*</span></label>
     <input type="number" name="$name" id="$name"
            class="form-control @error('$name') is-invalid @enderror"
-           value="{{ old('$name', \${$modelVar}->$name ?? '') }}">
-    @error('$name') <div class="invalid-feedback">{{ \$message }}</div> @enderror
+           value="{{ old('$name', \${$modelVar}->$name ?? '') }}" required>
+    @error('$name')
+        <div class="invalid-feedback">{{ \$message }}</div>
+    @enderror
 </div>
 BLADE,
             'image', 'file' => <<<BLADE
-<div class="form-group mb-3">
-    <label for="$name">$label</label>
+<div class="mb-3">
+    <label for="$name" class="form-label">$label</label>
     <input type="file" name="$name" id="$name"
-           class="form-control @error('$name') is-invalid @enderror">
+           class="form-control @error('$name') is-invalid @enderror"
+           accept="image/*">
     @if(isset(\${$modelVar}->$name) && \${$modelVar}->$name)
         <div class="mt-2">
-            <img src="{{ asset('storage/' . \${$modelVar}->$name) }}" alt="" width="120">
+            <img src="{{ asset('storage/' . \${$modelVar}->$name) }}" alt="" class="rounded" style="max-width: 200px;">
         </div>
     @endif
-    @error('$name') <div class="invalid-feedback">{{ \$message }}</div> @enderror
+    @error('$name')
+        <div class="invalid-feedback">{{ \$message }}</div>
+    @enderror
 </div>
 BLADE,
             default => <<<BLADE
-<div class="form-group mb-3">
-    <label for="$name">$label</label>
+<div class="mb-3">
+    <label for="$name" class="form-label">$label <span class="text-danger">*</span></label>
     <input type="text" name="$name" id="$name"
            class="form-control @error('$name') is-invalid @enderror"
-           value="{{ old('$name', \${$modelVar}->$name ?? '') }}">
-    @error('$name') <div class="invalid-feedback">{{ \$message }}</div> @enderror
+           value="{{ old('$name', \${$modelVar}->$name ?? '') }}" required>
+    @error('$name')
+        <div class="invalid-feedback">{{ \$message }}</div>
+    @enderror
 </div>
 BLADE,
         };
@@ -573,4 +701,3 @@ BLADE,
         File::append($routePath, $route);
     }
 }
-

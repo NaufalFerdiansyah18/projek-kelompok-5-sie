@@ -43,7 +43,7 @@
 <body>
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
         <a class="navbar-brand me-lg-5" href="{{ route('admin.dashboard') }}">
-            <img class="navbar-brand-dark" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" /> 
+            <img class="navbar-brand-dark" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" />
             <img class="navbar-brand-light" src="{{ asset('assets-admin/img/brand/dark.svg') }}" alt="Volt logo" />
         </a>
         <div class="d-flex align-items-center">
@@ -109,6 +109,27 @@
                         <span class="sidebar-text">Pelanggan</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('umkm.index') }}" class="nav-link">
+                        <span class="sidebar-icon">
+                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                            </svg>
+                        </span>
+                        <span class="sidebar-text">UMKM</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('user.index') }}" class="nav-link">
+                        <span class="sidebar-icon">
+                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                            </svg>
+                        </span>
+                        <span class="sidebar-text">User</span>
+                    </a>
+                </li>
+                
             </ul>
         </div>
     </nav>
@@ -215,7 +236,7 @@
                                     <h3 class="fw-extrabold mb-2">2,350</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">
-                                    Feb 1 - Apr 1, 
+                                    Feb 1 - Apr 1,
                                     <svg class="icon icon-xxs text-gray-400 ms-1 me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
@@ -250,7 +271,7 @@
                                     <h3 class="fw-extrabold mb-2">$53,000</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">
-                                    Feb 1 - Apr 1, 
+                                    Feb 1 - Apr 1,
                                     <svg class="icon icon-xxs text-gray-400 ms-1 me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
@@ -285,7 +306,7 @@
                                     <h3 class="fw-extrabold mb-2">50.88%</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">
-                                    Feb 1 - Apr 1, 
+                                    Feb 1 - Apr 1,
                                     <svg class="icon icon-xxs text-gray-400 ms-1 me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
