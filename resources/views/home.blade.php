@@ -187,7 +187,7 @@
                             <strong>Div umum</strong> — ini hanya <em>container</em> untuk konten bebas.
                         </div>
                         <p class="text-muted small mt-3 mb-0">
-                            Gunakan <code>.card</code> untuk konten yang butuh border & sedikit efek shadow.
+                            Gunakan <code>.card</code> untuk konten yang butuh border & sedikit efek shadow. tws
                         </p>
                     </div>
                 </div>
