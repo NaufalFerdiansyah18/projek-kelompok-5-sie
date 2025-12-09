@@ -7,7 +7,7 @@
                     <i class="ti ti-menu-2" style="font-size: 24px;"></i>
                 </button>
             </div>
-            
+
             <!-- Desktop Sidebar Toggle -->
             <div class="d-none d-lg-block">
                 <a href="#" class="sidebar-toggle d-flex p-3 text-decoration-none">
@@ -20,7 +20,7 @@
                 </a>
             </div>
         </div>
-        
+
         <!-- Right Side Actions -->
         <ul class="list-unstyled d-flex align-items-center mb-0 gap-2">
             <!-- Search -->
@@ -30,7 +30,7 @@
                     <small class="ms-1">⌘K</small>
                 </button>
             </li>
-            
+
             <!-- Notification -->
             <li>
                 <button class="btn btn-ghost position-relative btn-icon rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotification" aria-controls="offcanvasNotification">
@@ -40,14 +40,14 @@
                     </span>
                 </button>
             </li>
-            
+
             <!-- User Menu -->
             <li>
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center gap-2 text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="d-flex flex-column align-items-end d-none d-md-flex">
-                            <span class="fw-semibold text-dark" style="font-size: 14px; line-height: 1.2;">Admin User</span>
-                            <span class="text-secondary" style="font-size: 12px; line-height: 1.2;">admin@example.com</span>
+                            <span class="fw-semibold text-dark" style="font-size: 14px; line-height: 1.2;"> {{Auth::user()->name}} </span>
+                            <span class="text-secondary" style="font-size: 12px; line-height: 1.2;"> {{Auth::user()->email}}</span>
                         </div>
                         <img src="{{ asset('assets-dasher/images/avatar/avatar-1.jpg') }}" alt="User" class="avatar rounded-circle">
                         <i class="ti ti-chevron-down text-secondary" style="font-size: 16px;"></i>
@@ -61,7 +61,7 @@
                                 <p class="mb-0 text-secondary small">admin@example.com</p>
                             </div>
                         </div>
-                        
+
                         <!-- Menu Items -->
                         <div class="p-3 d-flex flex-column gap-1" style="background: #fff;">
                             <a href="#" class="dropdown-item d-flex align-items-center gap-2" style="color: #495057;">
@@ -85,7 +85,7 @@
                                 <span>Account Settings</span>
                             </a>
                         </div>
-                        
+
                         <!-- Logout -->
                         <div class="border-top border-dashed mb-4 pt-4 px-4" style="background: #fff;">
                             <a href="#" class="text-secondary d-flex align-items-center gap-2 text-decoration-none">
