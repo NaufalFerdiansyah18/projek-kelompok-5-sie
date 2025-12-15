@@ -46,8 +46,8 @@
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center gap-2 text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="d-flex flex-column align-items-end d-none d-md-flex">
-                            <span class="fw-semibold text-dark" style="font-size: 14px; line-height: 1.2;"> {{Auth::user()->name}} </span>
-                            <span class="text-secondary" style="font-size: 12px; line-height: 1.2;"> {{Auth::user()->email}}</span>
+                            <span class="fw-semibold text-dark" style="font-size: 14px; line-height: 1.2;"> {{ Auth::user()->first_name ?? 'Admin' }} </span>
+                            <span class="text-secondary" style="font-size: 12px; line-height: 1.2;"> {{ Auth::user()->email ?? '' }}</span>
                         </div>
                         <img src="{{ asset('assets-dasher/images/avatar/avatar-1.jpg') }}" alt="User" class="avatar rounded-circle">
                         <i class="ti ti-chevron-down text-secondary" style="font-size: 16px;"></i>
@@ -57,38 +57,16 @@
                         <div class="d-flex gap-3 align-items-center border-bottom border-dashed px-4 py-4" style="background: #fff;">
                             <img src="{{ asset('assets-dasher/images/avatar/avatar-1.jpg') }}" alt="User" class="avatar avatar-md rounded-circle">
                             <div>
-                                <h4 class="mb-0 fs-5" style="color: #212529;">Admin User</h4>
-                                <p class="mb-0 text-secondary small">admin@example.com</p>
+                                <h4 class="mb-0 fs-5" style="color: #212529;">{{ Auth::user()->first_name ?? 'Admin' }}</h4>
+                                <p class="mb-0 text-secondary small">{{ Auth::user()->email ?? '' }}</p>
                             </div>
                         </div>
 
-                        <!-- Menu Items -->
-                        <div class="p-3 d-flex flex-column gap-1" style="background: #fff;">
-                            <a href="#" class="dropdown-item d-flex align-items-center gap-2" style="color: #495057;">
-                                <i class="ti ti-home-2"></i>
-                                <span>Home</span>
-                            </a>
-                            <a href="#" class="dropdown-item d-flex align-items-center gap-2" style="color: #495057;">
-                                <i class="ti ti-inbox"></i>
-                                <span>Inbox</span>
-                            </a>
-                            <a href="#" class="dropdown-item d-flex align-items-center gap-2" style="color: #495057;">
-                                <i class="ti ti-message"></i>
-                                <span>Chat</span>
-                            </a>
-                            <a href="#" class="dropdown-item d-flex align-items-center gap-2" style="color: #495057;">
-                                <i class="ti ti-activity"></i>
-                                <span>Activity</span>
-                            </a>
-                            <a href="#" class="dropdown-item d-flex align-items-center gap-2" style="color: #495057;">
-                                <i class="ti ti-settings"></i>
-                                <span>Account Settings</span>
-                            </a>
-                        </div>
+                        <!-- Only Logout -->
 
                         <!-- Logout -->
                         <div class="border-top border-dashed mb-4 pt-4 px-4" style="background: #fff;">
-                            <a href="#" class="text-secondary d-flex align-items-center gap-2 text-decoration-none">
+                            <a href="{{ route('auth.logout') }}" class="text-secondary d-flex align-items-center gap-2 text-decoration-none">
                                 <i class="ti ti-logout-2"></i>
                                 <span>Logout</span>
                             </a>
@@ -150,4 +128,3 @@
         </div>
     </div>
 </div>
-

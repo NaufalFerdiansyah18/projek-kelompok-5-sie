@@ -59,11 +59,31 @@
                     <span class="text">Produk</span>
                 </a>
             </li>
+            
+            <!-- Pesanan (Admin) -->
+            <li class="nav-item">
+                <a href="{{ route('admin.pesanan.index') }}" class="nav-link {{ request()->routeIs('admin.pesanan.*') ? 'active' : '' }}">
+                    <span class="nav-icon">
+                        <i class="ti ti-receipt" style="font-size: 20px;"></i>
+                    </span>
+                    <span class="text">Pesanan</span>
+                </a>
+            </li>
+            
+            <!-- Ulasan Produk (Admin) -->
+            <li class="nav-item">
+                <a href="{{ route('admin.ulasan.index') }}" class="nav-link {{ request()->routeIs('admin.ulasan.*') ? 'active' : '' }}">
+                    <span class="nav-icon">
+                        <i class="ti ti-star" style="font-size: 20px;"></i>
+                    </span>
+                    <span class="text">Ulasan Produk</span>
+                </a>
+            </li>
             <!-- User -->
             <li class="nav-item">
                 <a href="{{ route('warga.index') }}" class="nav-link {{ request()->routeIs('warga.*') ? 'active' : '' }}">
                     <span class="nav-icon">
-                        <i class="ti ti-user" style="font-size: 20px;"></i>
+                        <i class="ti ti-users" style="font-size: 20px;"></i>
                     </span>
                     <span class="text">Warga</span>
                 </a>
@@ -92,5 +112,4 @@
         </ul>
     </div>
 </nav>
-
 

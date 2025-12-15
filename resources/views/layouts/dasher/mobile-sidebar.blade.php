@@ -51,7 +51,20 @@
                     <span>Produk</span>
                 </a>
             </li>
+            
+            <li class="nav-item">
+                <a href="{{ route('admin.pesanan.index') }}" class="nav-link {{ request()->routeIs('admin.pesanan.*') ? 'active' : '' }}">
+                    <i class="ti ti-receipt me-2" style="font-size: 20px;"></i>
+                    <span>Pesanan</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="{{ route('admin.ulasan.index') }}" class="nav-link {{ request()->routeIs('admin.ulasan.*') ? 'active' : '' }}">
+                    <i class="ti ti-star me-2" style="font-size: 20px;"></i>
+                    <span>Ulasan Produk</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
-

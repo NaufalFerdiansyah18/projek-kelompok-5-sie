@@ -1,6 +1,6 @@
 @extends('layouts.auth.app')
 @section('content')
-    <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+    <div class="card auth-card border-0 shadow-sm p-4 p-lg-5 w-100 mx-auto">
         <div class="text-center text-md-center mb-4 mt-md-0">
             <h1 class="mb-0 h3">Sign in to our platform</h1>
         </div>
@@ -26,7 +26,7 @@
                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                         </svg>
                     </span>
-                    <input type="email" name="email" class="form-control" placeholder="example@company.com" id="email" autofocus>
+                    <input type="email" name="email" class="form-control" placeholder="example@company.com" id="email" value="{{ old('email') }}" autofocus>
                 </div>
             </div>
             <!-- End of Form -->
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-gray-800">Sign in</button>
+                <button type="submit" class="btn btn-primary">Sign in</button>
             </div>
         </form>
         <div class="mt-3 mb-4 text-center">

@@ -11,9 +11,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\UlasanProdukController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('auth');
 });
 
 Route::get('/pcr', function () {
@@ -56,6 +58,10 @@ Route::group(['middleware' => ['checkrole:Super Admin']], function () {
 
         // Resource pelanggan (jika perlu ikut dilindungi)
         Route::resource('pelanggan', PelangganController::class);
+
+        // Resource pesanan & ulasan produk (admin only)
+        Route::resource('pesanan', PesananController::class)->only(['index','create','store','show']);
+        Route::resource('ulasan', UlasanProdukController::class)->only(['index','create','store']);
 
     });
 
