@@ -99,7 +99,7 @@ class WargaController extends Controller
 
         $warga->update($request->all());
 
-        return redirect()->route('warga.index')->with('success', 'Data warga berhasil diperbarui.');
+        return redirect()->route('admin.warga.index')->with('success', 'Data warga berhasil diperbarui.');
     }
 
     /**
@@ -110,6 +110,6 @@ class WargaController extends Controller
         $warga = Warga::findOrFail($id);
         $warga->delete();
 
-        return redirect()->route('warga.index')->with('success', 'Data warga berhasil dihapus.');
+        return redirect()->route('admin.warga.index')->with('success', 'Data warga berhasil dihapus.');
     }
 }

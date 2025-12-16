@@ -32,7 +32,7 @@
 
             <!-- UMKM -->
             <li class="nav-item">
-                <a href="{{ route('umkm.index') }}" class="nav-link {{ request()->routeIs('umkm.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.umkm.index') }}" class="nav-link {{ request()->routeIs('admin.umkm.*') ? 'active' : '' }}">
                     <span class="nav-icon">
                         <i class="ti ti-building-store" style="font-size: 20px;"></i>
                     </span>
@@ -42,7 +42,7 @@
 
             <!-- User -->
             <li class="nav-item">
-                <a href="{{ route('user.index') }}" class="nav-link {{ request()->routeIs('user.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
                     <span class="nav-icon">
                         <i class="ti ti-user" style="font-size: 20px;"></i>
                     </span>
@@ -52,14 +52,14 @@
 
             <!-- Products -->
             <li class="nav-item">
-                <a href="{{ route('produk.index') }}" class="nav-link {{ request()->routeIs('produk.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.produk.index') }}" class="nav-link {{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
                     <span class="nav-icon">
                         <i class="ti ti-shopping-bag" style="font-size: 20px;"></i>
                     </span>
                     <span class="text">Produk</span>
                 </a>
             </li>
-            
+
             <!-- Pesanan (Admin) -->
             <li class="nav-item">
                 <a href="{{ route('admin.pesanan.index') }}" class="nav-link {{ request()->routeIs('admin.pesanan.*') ? 'active' : '' }}">
@@ -69,7 +69,7 @@
                     <span class="text">Pesanan</span>
                 </a>
             </li>
-            
+
             <!-- Ulasan Produk (Admin) -->
             <li class="nav-item">
                 <a href="{{ route('admin.ulasan.index') }}" class="nav-link {{ request()->routeIs('admin.ulasan.*') ? 'active' : '' }}">
@@ -79,9 +79,9 @@
                     <span class="text">Ulasan Produk</span>
                 </a>
             </li>
-            <!-- User -->
+            <!-- Warga -->
             <li class="nav-item">
-                <a href="{{ route('warga.index') }}" class="nav-link {{ request()->routeIs('warga.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.warga.index') }}" class="nav-link {{ request()->routeIs('admin.warga.*') ? 'active' : '' }}">
                     <span class="nav-icon">
                         <i class="ti ti-users" style="font-size: 20px;"></i>
                     </span>
@@ -89,27 +89,6 @@
                 </a>
             </li>
 
-
-            <!-- Divider -->
-            <li class="nav-item">
-                <div class="nav-heading">Pages</div>
-                <hr class="mx-5 nav-line mb-1">
-            </li>
-
-            <!-- Upgrade UI Card -->
-            <li class="nav-item">
-                <div class="text-center py-5 upgrade-ui">
-                    <div>
-                        <img src="{{ asset('assets-dasher/images/avatar/avatar-1.jpg') }}" alt="User" class="avatar avatar-md rounded-circle mb-3">
-                        <div class="my-3">
-                            <h5 class="mb-1 fs-6">Admin User</h5>
-                            <span class="text-secondary">Dasher UI - Free Version</span>
-                        </div>
-                        <a href="#" class="btn btn-light btn-sm">Upgrade</a>
-                    </div>
-                </div>
-            </li>
         </ul>
     </div>
 </nav>
-

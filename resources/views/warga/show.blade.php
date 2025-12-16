@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('warga.index') }}">Warga</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.warga.index') }}">Warga</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Detail Warga</li>
             </ol>
         </nav>
@@ -81,9 +81,9 @@
                     </div>
 
                     <div class="d-flex justify-content-end mt-4">
-                        <a href="{{ route('warga.edit', $warga->warga_id) }}" class="btn btn-warning">Edit</a>
-                        <a href="{{ route('warga.index') }}" class="btn btn-outline-secondary ms-2">Kembali</a>
-                    </div>
+                        <a href="{{ route('admin.warga.edit', $warga->warga_id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('admin.warga.index') }}" class="btn btn-outline-secondary ms-2">Kembali</a>
+                </div>
                 </div>
             </div>
         </div>

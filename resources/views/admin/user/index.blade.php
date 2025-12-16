@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
                 <p class="text-muted mb-0">Kelola data seluruh user</p>
             </div>
             <div>
-                <a href="{{ route('user.create') }}" class="btn btn-primary">
+                <a href="{{ route('admin.user.create') }}" class="btn btn-primary">
                     <i class="ti ti-plus me-2"></i> Tambah User
                 </a>
             </div>
@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Storage;
     @php($filters = $filters ?? [])
     <div class="card border-0 shadow-sm">
         <div class="card-header bg-white border-bottom">
-            <form action="{{ route('user.index') }}" method="GET" class="row g-3 align-items-end">
+            <form action="{{ route('admin.user.index') }}" method="GET" class="row g-3 align-items-end">
                 <div class="col-md-8">
                     <label class="form-label text-muted small">Cari Nama / Email</label>
                     <div class="input-group">
@@ -43,13 +43,13 @@ use Illuminate\Support\Facades\Storage;
                     <button type="submit" class="btn btn-success flex-fill">
                         <i class="ti ti-filter me-1"></i> Terapkan
                     </button>
-                    <a href="{{ route('user.index') }}" class="btn btn-light border flex-fill">
+                    <a href="{{ route('admin.user.index') }}" class="btn btn-light border flex-fill">
                         Reset
                     </a>
                 </div>
                 @if(!empty($filters['search']))
                     <div class="col-12">
-                        <a href="{{ route('user.index') }}" class="btn btn-link px-0 text-decoration-none">
+                        <a href="{{ route('admin.user.index') }}" class="btn btn-link px-0 text-decoration-none">
                             Bersihkan pencarian
                         </a>
                     </div>
@@ -87,10 +87,10 @@ use Illuminate\Support\Facades\Storage;
                             </td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('user.edit', $item->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('admin.user.edit', $item->id) }}" class="btn btn-sm btn-warning">
                                         <i class="ti ti-edit"></i>
                                     </a>
-                                    <form action="{{ route('user.destroy', $item->id) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                    <form action="{{ route('admin.user.destroy', $item->id) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">

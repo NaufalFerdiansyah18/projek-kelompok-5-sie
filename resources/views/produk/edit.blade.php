@@ -30,13 +30,13 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
-                    <form action="{{ route('produk.update', $produk) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.produk.update', $produk) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('produk.partials.form')
                         <div class="d-flex justify-content-end mt-4">
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('produk.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                            <a href="{{ route('admin.produk.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
                         </div>
                     </form>
                 </div>

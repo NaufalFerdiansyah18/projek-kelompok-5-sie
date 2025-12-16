@@ -10,7 +10,7 @@
             <p class="text-muted mb-0">Kelola data warga</p>
         </div>
         <div>
-            <a href="{{ route('warga.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.warga.create') }}" class="btn btn-primary">
                 <i class="ti ti-plus me-2"></i> Tambah Warga
             </a>
         </div>
@@ -27,7 +27,7 @@
 @php($filters = $filters ?? [])
 <div class="card border-0 shadow-sm">
     <div class="card-header bg-white border-bottom">
-        <form action="{{ route('warga.index') }}" method="GET" class="row g-3 align-items-end">
+        <form action="{{ route('admin.warga.index') }}" method="GET" class="row g-3 align-items-end">
             <div class="col-md-5 col-lg-4">
                 <label class="form-label text-muted small">Cari Data Warga</label>
                 <div class="input-group">
@@ -47,13 +47,13 @@
                 <button type="submit" class="btn btn-success flex-fill">
                     <i class="ti ti-filter me-1"></i> Terapkan
                 </button>
-                <a href="{{ route('warga.index') }}" class="btn btn-light border flex-fill">
+                <a href="{{ route('admin.warga.index') }}" class="btn btn-light border flex-fill">
                     Reset
                 </a>
             </div>
             @if(!empty($filters['search']))
             <div class="col-12">
-                <a href="{{ route('warga.index', !empty($filters['gender']) ? ['gender' => $filters['gender']] : []) }}" class="btn btn-link px-0 text-decoration-none">
+                <a href="{{ route('admin.warga.index', !empty($filters['gender']) ? ['gender' => $filters['gender']] : []) }}" class="btn btn-link px-0 text-decoration-none">
                         Bersihkan pencarian
                     </a>
                 </div>
@@ -97,10 +97,10 @@
                         <td>{{ $item->email ?? '-' }}</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a href="{{ route('warga.edit', $item->warga_id) }}" class="btn btn-sm btn-warning">
+                                <a href="{{ route('admin.warga.edit', $item->warga_id) }}" class="btn btn-sm btn-warning">
                                     <i class="ti ti-edit"></i>
                                 </a>
-                                <form action="{{ route('warga.destroy', $item->warga_id) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus warga ini?')">
+                                <form action="{{ route('admin.warga.destroy', $item->warga_id) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus warga ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">

@@ -30,35 +30,35 @@
 
             <!-- UMKM -->
             <li class="nav-item">
-                <a href="{{ route('umkm.index') }}" class="nav-link {{ request()->routeIs('umkm.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.umkm.index') }}" class="nav-link {{ request()->routeIs('admin.umkm.*') ? 'active' : '' }}">
                     <i class="ti ti-building-store me-2" style="font-size: 20px;"></i>
-                    <span>UMKM</span>
+                    <span>Admin/umkm</span>
                 </a>
             </li>
 
             <!-- User -->
             <li class="nav-item">
-                <a href="{{ route('user.index') }}" class="nav-link {{ request()->routeIs('user.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
                     <i class="ti ti-user me-2" style="font-size: 20px;"></i>
-                    <span>User</span>
+                    <span>Admin/user</span>
                 </a>
             </li>
 
             <!-- Products -->
             <li class="nav-item">
-                <a href="{{ route('produk.index') }}" class="nav-link {{ request()->routeIs('produk.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.produk.index') }}" class="nav-link {{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
                     <i class="ti ti-shopping-bag me-2" style="font-size: 20px;"></i>
-                    <span>Produk</span>
+                    <span>Admin/produk</span>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a href="{{ route('admin.pesanan.index') }}" class="nav-link {{ request()->routeIs('admin.pesanan.*') ? 'active' : '' }}">
                     <i class="ti ti-receipt me-2" style="font-size: 20px;"></i>
                     <span>Pesanan</span>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a href="{{ route('admin.ulasan.index') }}" class="nav-link {{ request()->routeIs('admin.ulasan.*') ? 'active' : '' }}">
                     <i class="ti ti-star me-2" style="font-size: 20px;"></i>

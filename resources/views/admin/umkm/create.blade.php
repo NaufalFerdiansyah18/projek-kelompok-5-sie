@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('umkm.index') }}">UMKM</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.umkm.index') }}">UMKM</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Tambah UMKM</li>
                 </ol>
     </nav>
@@ -52,7 +52,7 @@
         <!-- START: MAIN CONTENT -->
 <div class="card border-0 shadow">
     <div class="card-body">
-        <form action="{{ route('umkm.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.umkm.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-4">
                 <div class="col-lg-6 col-sm-12">
@@ -189,4 +189,3 @@
     <!-- Volt JS -->
     <script src="{{ asset('assets-admin/js/volt.js') }}"></script>
     <!-- END: JS -->
-

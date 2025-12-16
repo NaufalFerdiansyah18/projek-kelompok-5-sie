@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('produk.index') }}">Produk</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.produk.index') }}">Produk</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Detail Produk</li>
             </ol>
         </nav>
@@ -68,9 +68,9 @@
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('produk.index') }}" class="btn btn-secondary">Kembali</a>
-                        <a href="{{ route('produk.edit', $produk) }}" class="btn btn-primary ms-2">Edit</a>
-                    </div>
+                        <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ route('admin.produk.edit', $produk) }}" class="btn btn-primary ms-2">Edit</a>
+                </div>
                 </div>
             </div>
         </div>

@@ -41,6 +41,8 @@ Route::post('question/store', [QuestionController::class, 'store'])->name('quest
 // ================================
 Route::get('auth', [AuthController::class, 'index'])->name('auth');
 Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('auth/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('auth/store', [AuthController::class, 'store'])->name('auth.store');
 Route::get('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 // ================================
@@ -63,14 +65,14 @@ Route::group(['middleware' => ['checkrole:Super Admin']], function () {
         Route::resource('pesanan', PesananController::class)->only(['index','create','store','show']);
         Route::resource('ulasan', UlasanProdukController::class)->only(['index','create','store']);
 
+        // Pindahkan resource UMKM, User, Produk, Warga ke dalam admin
+        Route::resource('umkm', UmkmController::class);
+        Route::resource('user', UserController::class);
+        Route::resource('produk', ProdukController::class);
+        Route::resource('warga', WargaController::class);
+
     });
 
 });
 
-// ==============================
-// ROUTE LAIN TANPA MIDDLEWARE
-// ==============================
-Route::resource('umkm', UmkmController::class);
-Route::resource('user', UserController::class);
-Route::resource('produk', ProdukController::class);
-Route::resource('warga', WargaController::class);
+// Non-admin resources dihapus agar semua akses berada di bawah admin

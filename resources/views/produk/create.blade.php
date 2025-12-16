@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('produk.index') }}">Produk</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.produk.index') }}">Produk</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tambah Produk</li>
             </ol>
         </nav>
@@ -32,13 +32,13 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
-                    <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.produk.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{-- Gunakan form yang sudah kamu buat --}}
                         @include('produk.partials.form')
                         <div class="d-flex justify-content-end mt-4">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('produk.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                            <a href="{{ route('admin.produk.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
                         </div>
                     </form>
                 </div>

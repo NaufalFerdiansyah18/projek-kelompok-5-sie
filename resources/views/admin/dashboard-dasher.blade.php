@@ -125,16 +125,16 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <a href="{{ route('produk.create') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.produk.create') }}" class="btn btn-primary">
                             <i class="ti ti-plus me-2"></i> Add Product
                         </a>
-                        <a href="{{ route('user.create') }}" class="btn btn-outline-primary">
+                        <a href="{{ route('admin.user.create') }}" class="btn btn-outline-primary">
                             <i class="ti ti-user-plus me-2"></i> Add User
                         </a>
-                        <a href="{{ route('umkm.create') }}" class="btn btn-outline-primary">
+                        <a href="{{ route('admin.umkm.create') }}" class="btn btn-outline-primary">
                             <i class="ti ti-building-store me-2"></i> Add UMKM
                         </a>
-                         <a href="{{ route('warga.create') }}" class="btn btn-outline-primary">
+                         <a href="{{ route('admin.warga.create') }}" class="btn btn-outline-primary">
                             <i class="ti ti-user-plus me-2"></i> Add Warga
                         </a>
                     </div>
@@ -143,4 +143,3 @@
         </div>
     </div>
 @endsection
-

@@ -73,7 +73,7 @@ class UmkmController extends Controller
 
         Umkm::create($data);
 
-        return redirect()->route('umkm.index')->with('success', 'Data UMKM berhasil ditambahkan!');
+        return redirect()->route('admin.umkm.index')->with('success', 'Data UMKM berhasil ditambahkan!');
     }
 
     /**
@@ -120,7 +120,7 @@ class UmkmController extends Controller
             if ($umkm->logo_foto_usaha) {
                 Storage::disk('public')->delete($umkm->logo_foto_usaha);
             }
-            
+
             $file = $request->file('logo_foto_usaha');
             $filename = time() . '_' . $file->getClientOriginalName();
             $path = $file->storeAs('umkm', $filename, 'public');
@@ -129,7 +129,7 @@ class UmkmController extends Controller
 
         $umkm->update($data);
 
-        return redirect()->route('umkm.index')->with('success', 'Data UMKM berhasil diupdate!');
+        return redirect()->route('admin.umkm.index')->with('success', 'Data UMKM berhasil diupdate!');
     }
 
     /**
@@ -138,14 +138,14 @@ class UmkmController extends Controller
     public function destroy(string $id)
     {
         $umkm = Umkm::findOrFail($id);
-        
+
         // Delete file if exists
         if ($umkm->logo_foto_usaha) {
             Storage::disk('public')->delete($umkm->logo_foto_usaha);
         }
-        
+
         $umkm->delete();
 
-        return redirect()->route('umkm.index')->with('success', 'Data UMKM berhasil dihapus!');
+        return redirect()->route('admin.umkm.index')->with('success', 'Data UMKM berhasil dihapus!');
     }
 }

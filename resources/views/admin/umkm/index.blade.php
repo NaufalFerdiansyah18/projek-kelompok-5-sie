@@ -10,7 +10,7 @@
                 <p class="text-muted mb-0">Kelola data Usaha Mikro, Kecil, dan Menengah</p>
             </div>
             <div>
-                <a href="{{ route('umkm.create') }}" class="btn btn-primary">
+                <a href="{{ route('admin.umkm.create') }}" class="btn btn-primary">
                     <i class="ti ti-plus me-2"></i> Tambah UMKM
                 </a>
             </div>
@@ -27,7 +27,7 @@
     @php($filters = $filters ?? [])
     <div class="card border-0 shadow-sm">
         <div class="card-header bg-white border-bottom">
-            <form action="{{ route('umkm.index') }}" method="GET" class="row g-3 align-items-end">
+            <form action="{{ route('admin.umkm.index') }}" method="GET" class="row g-3 align-items-end">
                 <div class="col-md-6">
                     <label class="form-label text-muted small">Cari Nama Usaha / Alamat</label>
                     <div class="input-group">
@@ -48,13 +48,13 @@
                     <button type="submit" class="btn btn-success flex-fill">
                         <i class="ti ti-filter me-1"></i> Terapkan
                     </button>
-                    <a href="{{ route('umkm.index') }}" class="btn btn-light border flex-fill">
+                    <a href="{{ route('admin.umkm.index') }}" class="btn btn-light border flex-fill">
                         Reset
                     </a>
                 </div>
                 @if(!empty($filters['search']))
                     <div class="col-12">
-                        <a href="{{ route('umkm.index', !empty($filters['kategori']) ? ['kategori' => $filters['kategori']] : []) }}" class="btn btn-link px-0 text-decoration-none">
+                        <a href="{{ route('admin.umkm.index', !empty($filters['kategori']) ? ['kategori' => $filters['kategori']] : []) }}" class="btn btn-link px-0 text-decoration-none">
                             Bersihkan pencarian
                         </a>
                     </div>
@@ -96,16 +96,16 @@
                             <td>{{ $item->kontak }}</td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('umkm.edit', $item->umkm_id) }}" class="btn btn-sm btn-warning">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <form action="{{ route('umkm.destroy', $item->umkm_id) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus UMKM ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            <i class="ti ti-trash"></i>
-                                        </button>
-                                    </form>
+                        <a href="{{ route('admin.umkm.edit', $item->umkm_id) }}" class="btn btn-sm btn-warning">
+                            <i class="ti ti-edit"></i>
+                        </a>
+                        <form action="{{ route('admin.umkm.destroy', $item->umkm_id) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus UMKM ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="ti ti-trash"></i>
+                            </button>
+                        </form>
                                 </div>
                             </td>
                         </tr>
@@ -153,17 +153,17 @@
         background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
         border-top: 2px solid #059669;
     }
-    
+
     .table-footer td {
         color: #065f46;
         font-weight: 500;
     }
-    
+
     .table thead {
         background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         border-bottom: 2px solid #059669;
     }
-    
+
     .table thead th {
         color: #065f46;
         font-weight: 600;

@@ -61,7 +61,7 @@ class ProdukController extends Controller
 
         Produk::create($data);
 
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan.');
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
     /**
@@ -107,7 +107,7 @@ class ProdukController extends Controller
 
         $produk->update($data);
 
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil diperbarui.');
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
     public function destroy(Produk $produk)
@@ -118,6 +118,6 @@ class ProdukController extends Controller
 
         $produk->delete();
 
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus.');
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
 }

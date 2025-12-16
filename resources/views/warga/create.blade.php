@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('warga.index') }}">Warga</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.warga.index') }}">Warga</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tambah Warga</li>
             </ol>
         </nav>
@@ -33,7 +33,7 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
-                    <form action="{{ route('warga.store') }}" method="POST">
+                    <form action="{{ route('admin.warga.store') }}" method="POST">
                         @csrf
 
                         <div class="row">
@@ -108,7 +108,7 @@
                         {{-- Tombol Aksi --}}
                         <div class="d-flex justify-content-end mt-4">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('warga.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                            <a href="{{ route('admin.warga.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
                         </div>
                     </form>
                 </div>

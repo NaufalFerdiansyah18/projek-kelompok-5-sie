@@ -10,7 +10,7 @@
                 <p class="text-muted mb-0">Form untuk menambahkan data user baru</p>
             </div>
             <div>
-                <a href="{{ route('user.index') }}" class="btn btn-outline-secondary">
+                <a href="{{ route('admin.user.index') }}" class="btn btn-outline-secondary">
                     <i class="ti ti-arrow-left me-2"></i> Kembali
                 </a>
             </div>
@@ -19,7 +19,7 @@
 
     <div class="card border-0 shadow-sm">
         <div class="card-body">
-            <form action="{{ route('user.store') }}" method="POST">
+            <form action="{{ route('admin.user.store') }}" method="POST">
                 @csrf
                 <div class="row mb-4">
                     <div class="col-lg-6 col-sm-12">
@@ -68,7 +68,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="ti ti-check me-2"></i> Simpan
                     </button>
-                    <a href="{{ route('user.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                    <a href="{{ route('admin.user.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
                 </div>
             </form>
         </div>

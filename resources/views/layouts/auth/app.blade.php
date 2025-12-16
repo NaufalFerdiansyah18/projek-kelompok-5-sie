@@ -23,7 +23,7 @@
     <title>Login - Dasher</title>
     @include('layouts.dasher.css')
 </head>
-<body class="bg-light">
+<body style="background-color: var(--dasher-primary);">
     <main class="min-vh-100 d-flex align-items-center">
         <div class="container d-flex justify-content-center">
             <div class="col-12 col-md-8 col-lg-5">

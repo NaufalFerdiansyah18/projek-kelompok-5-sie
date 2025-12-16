@@ -58,7 +58,7 @@ class UserController extends Controller
     ]);
 
     // Redirect ke halaman index
-    return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan!');
+    return redirect()->route('admin.user.index')->with('success', 'User berhasil ditambahkan!');
 }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        return redirect()->route('user.index')->with('success','Penambahan Data Berhasil!');
+        return redirect()->route('admin.user.index')->with('success','Penambahan Data Berhasil!');
     }
 
     /**
@@ -113,7 +113,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        return redirect()->route('user.index')->with('success', 'Data Berhasil Diupdate!');
+        return redirect()->route('admin.user.index')->with('success', 'Data Berhasil Diupdate!');
     }
 
     /**
@@ -124,6 +124,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
-        return redirect()->route('user.index')->with('success', 'Data Berhasil Dihapus!');
+        return redirect()->route('admin.user.index')->with('success', 'Data Berhasil Dihapus!');
     }
 }

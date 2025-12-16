@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('warga.index') }}">Data Warga</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.warga.index') }}">Data Warga</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Warga</li>
             </ol>
         </nav>
@@ -33,7 +33,7 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
-                    <form action="{{ route('warga.update', $warga->warga_id) }}" method="POST">
+                    <form action="{{ route('admin.warga.update', $warga->warga_id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
@@ -84,7 +84,7 @@
 
                         <div class="d-flex justify-content-end mt-4">
                             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                            <a href="{{ route('warga.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                            <a href="{{ route('admin.warga.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
                         </div>
                     </form>
                 </div>

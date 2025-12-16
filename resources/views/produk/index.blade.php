@@ -10,7 +10,7 @@
                 <p class="text-muted mb-0">Kelola data produk</p>
             </div>
             <div>
-                <a href="{{ route('produk.create') }}" class="btn btn-primary">
+                <a href="{{ route('admin.produk.create') }}" class="btn btn-primary">
                     <i class="ti ti-plus me-2"></i> Tambah Product
                 </a>
             </div>
@@ -27,7 +27,7 @@
     @php($filters = $filters ?? [])
     <div class="card border-0 shadow-sm">
         <div class="card-header bg-white border-bottom">
-            <form action="{{ route('produk.index') }}" method="GET" class="row g-3 align-items-end">
+            <form action="{{ route('admin.produk.index') }}" method="GET" class="row g-3 align-items-end">
                 <div class="col-md-8">
                     <label class="form-label text-muted small">Cari Produk</label>
                     <div class="input-group">
@@ -39,13 +39,13 @@
                     <button type="submit" class="btn btn-success flex-fill">
                         <i class="ti ti-filter me-1"></i> Terapkan
                     </button>
-                    <a href="{{ route('produk.index') }}" class="btn btn-light border flex-fill">
+                    <a href="{{ route('admin.produk.index') }}" class="btn btn-light border flex-fill">
                         Reset
                     </a>
                 </div>
                 @if(!empty($filters['search']))
                     <div class="col-12">
-                        <a href="{{ route('produk.index') }}" class="btn btn-link px-0 text-decoration-none">
+                        <a href="{{ route('admin.produk.index') }}" class="btn btn-link px-0 text-decoration-none">
                             Bersihkan pencarian
                         </a>
                     </div>
@@ -79,13 +79,13 @@
                                 </td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('produk.show', $item->produk_id) }}" class="btn btn-sm btn-info">
+                                        <a href="{{ route('admin.produk.show', $item->produk_id) }}" class="btn btn-sm btn-info">
                                             <i class="ti ti-eye"></i>
                                         </a>
-                                        <a href="{{ route('produk.edit', $item->produk_id) }}" class="btn btn-sm btn-warning">
+                                        <a href="{{ route('admin.produk.edit', $item->produk_id) }}" class="btn btn-sm btn-warning">
                                             <i class="ti ti-edit"></i>
                                         </a>
-                                        <form action="{{ route('produk.destroy', $item->produk_id) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
+                                        <form action="{{ route('admin.produk.destroy', $item->produk_id) }}" method="POST" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">
