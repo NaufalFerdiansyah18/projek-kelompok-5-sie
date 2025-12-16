@@ -7,7 +7,7 @@
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
-                    @foreach ($errors->all() as $error)
+               c     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
@@ -56,12 +56,12 @@
                     <input type="password" name="password_confirmation" placeholder="Confirm Password" class="form-control" id="password_confirmation" required>
                 </div>
             </div>
-            
+
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Sign up</button>
             </div>
         </form>
-        
+
         <div class="d-flex justify-content-center align-items-center mt-4">
             <span class="fw-normal">
                 Already have an account?
