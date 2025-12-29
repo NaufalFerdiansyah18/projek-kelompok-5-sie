@@ -144,17 +144,17 @@ use Illuminate\Support\Facades\Storage;
         background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
         border-top: 2px solid #059669;
     }
-    
+
     .table-footer td {
         color: #065f46;
         font-weight: 500;
     }
-    
+
     .table thead {
         background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         border-bottom: 2px solid #059669;
     }
-    
+
     .table thead th {
         color: #065f46;
         font-weight: 600;

@@ -54,9 +54,7 @@ Route::group(['middleware' => ['checkrole:Super Admin']], function () {
     Route::prefix('admin')->name('admin.')->group(function () {
 
         // 🔒 Dashboard hanya untuk Super Admin
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard-dasher');
-        })->name('dashboard');
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
         // Resource pelanggan (jika perlu ikut dilindungi)
         Route::resource('pelanggan', PelangganController::class);

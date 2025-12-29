@@ -148,7 +148,7 @@
                             <!-- Buttons -->
                             <div class="d-flex gap-2">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="{{ route('umkm.index') }}" class="btn btn-outline-secondary">Batal</a>
+                                <a href="{{ route('admin.umkm.index') }}" class="btn btn-outline-secondary">Batal</a>
                             </div>
                         </div>
             </div>

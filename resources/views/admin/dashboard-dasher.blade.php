@@ -16,9 +16,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h6 class="text-muted mb-2">Total Users</h6>
-                            <h2 class="mb-0">2,350</h2>
+                            <h2 class="mb-0">{{ $totalUsers }}</h2>
                             <small class="text-success">
-                                <i class="ti ti-arrow-up"></i> 22% from last month
+                                <i class="ti ti-users"></i> Registered Users
                             </small>
                         </div>
                         <div class="icon-shape bg-primary-subtle text-primary rounded-circle" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
@@ -34,14 +34,14 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
-                            <h6 class="text-muted mb-2">Revenue</h6>
-                            <h2 class="mb-0">$100000,000</h2>
+                            <h6 class="text-muted mb-2">Total UMKM</h6>
+                            <h2 class="mb-0">{{ $totalUmkm }}</h2>
                             <small class="text-success">
-                                <i class="ti ti-arrow-up"></i> 99999999% from last month
+                                <i class="ti ti-building-store"></i> Registered UMKM
                             </small>
                         </div>
                         <div class="icon-shape bg-success-subtle text-success rounded-circle" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
-                            <i class="ti ti-currency-dollar" style="font-size: 28px;"></i>
+                            <i class="ti ti-building-store" style="font-size: 28px;"></i>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h6 class="text-muted mb-2">Products</h6>
-                            <h2 class="mb-0">{{ \App\Models\Produk::count() }}</h2>
+                            <h2 class="mb-0">{{ $totalProducts }}</h2>
                             <small class="text-info">
                                 <i class="ti ti-package"></i> Total products
                             </small>
@@ -73,44 +73,30 @@
         <div class="col-12 col-xl-8">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white border-bottom">
-                    <h5 class="card-title mb-0">Recent Activity</h5>
+                    <h5 class="card-title mb-0">Recent Activity (Users)</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover align-middle">
                             <thead>
                                 <tr>
-                                    <th>Page</th>
-                                    <th>Views</th>
-                                    <th>Value</th>
-                                    <th>Bounce Rate</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Joined</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($recentUsers as $user)
                                 <tr>
-                                    <td>/admin/dashboard</td>
-                                    <td>3,225</td>
-                                    <td>$20</td>
+                                    <td>{{ $user->first_name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->role }}</td>
                                     <td>
-                                        <span class="badge bg-success">42.55%</span>
+                                        <span class="badge bg-success">{{ $user->created_at->diffForHumans() }}</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>/admin/products</td>
-                                    <td>2,150</td>
-                                    <td>$15</td>
-                                    <td>
-                                        <span class="badge bg-warning">58.20%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>/admin/users</td>
-                                    <td>1,800</td>
-                                    <td>$10</td>
-                                    <td>
-                                        <span class="badge bg-danger">65.30%</span>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

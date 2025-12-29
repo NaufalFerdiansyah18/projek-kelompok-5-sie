@@ -32,7 +32,7 @@
             <li class="nav-item">
                 <a href="{{ route('admin.umkm.index') }}" class="nav-link {{ request()->routeIs('admin.umkm.*') ? 'active' : '' }}">
                     <i class="ti ti-building-store me-2" style="font-size: 20px;"></i>
-                    <span>Admin/umkm</span>
+                    <span>UMKM</span>
                 </a>
             </li>
 
@@ -40,7 +40,7 @@
             <li class="nav-item">
                 <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
                     <i class="ti ti-user me-2" style="font-size: 20px;"></i>
-                    <span>Admin/user</span>
+                    <span>User</span>
                 </a>
             </li>
 
@@ -48,7 +48,15 @@
             <li class="nav-item">
                 <a href="{{ route('admin.produk.index') }}" class="nav-link {{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
                     <i class="ti ti-shopping-bag me-2" style="font-size: 20px;"></i>
-                    <span>Admin/produk</span>
+                    <span>Produk</span>
+                </a>
+            </li>
+
+            <!-- Warga -->
+            <li class="nav-item">
+                <a href="{{ route('admin.warga.index') }}" class="nav-link {{ request()->routeIs('admin.warga.*') ? 'active' : '' }}">
+                    <i class="ti ti-users me-2" style="font-size: 20px;"></i>
+                    <span>Warga</span>
                 </a>
             </li>
 

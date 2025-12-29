@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('produk.index') }}">produk</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.produk.index') }}">produk</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
             </ol>
         </nav>

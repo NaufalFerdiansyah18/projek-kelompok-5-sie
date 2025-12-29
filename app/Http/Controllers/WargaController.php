@@ -59,7 +59,7 @@ class WargaController extends Controller
 
         Warga::create($request->all());
 
-        return redirect()->route('warga.index')->with('success', 'Data warga berhasil ditambahkan.');
+        return redirect()->route('admin.warga.index')->with('success', 'Data warga berhasil ditambahkan.');
     }
 
     /**

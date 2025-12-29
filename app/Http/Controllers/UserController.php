@@ -48,6 +48,7 @@ class UserController extends Controller
         'first_name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|min:6|confirmed',
+        'role' => 'required|string',
     ]);
 
     // Simpan ke database
@@ -55,6 +56,7 @@ class UserController extends Controller
         'first_name' => $request->first_name,
         'email' => $request->email,
         'password' => bcrypt($request->password),
+        'role' => $request->role,
     ]);
 
     // Redirect ke halaman index
@@ -90,11 +92,13 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'nullable|min:6|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'role' => 'required|string',
         ]);
 
         $user->first_name = $request->first_name;
         $user->email = $request->email;
-        
+        $user->role = $request->role;
+
         // Update password hanya jika diisi
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
@@ -106,7 +110,7 @@ class UserController extends Controller
             if ($user->profile_picture) {
                 Storage::disk('public')->delete($user->profile_picture);
             }
-            
+
             // Store new profile picture
             $path = $request->file('profile_picture')->store('profile_pictures', 'public');
             $user->profile_picture = $path;
