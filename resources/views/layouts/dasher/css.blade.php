@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="{{ asset('assets-dasher/images/favicon/favicon-32x32.png') }}">
+<link rel="icon" type="image/svg+xml" href="{{ asset('assets-dasher/images/brand/logo/logo-icon.svg') }}">
 
 <!-- Bootstrap 5 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">

@@ -3,8 +3,8 @@
         <!-- Brand Logo -->
         <div class="brand-logo">
             <a href="{{ route('admin.dashboard') }}" class="d-none d-md-flex align-items-center gap-2 text-decoration-none">
-                <img src="{{ asset('assets-dasher/images/brand/logo/logo-icon.svg') }}" alt="Dasher" height="32">
-                <span class="fw-bold fs-4 site-logo-text">Dasher</span>
+                <i class="ti ti-building-store text-success" style="font-size: 32px;"></i>
+                <span class="fw-bold fs-4 site-logo-text">UMKM</span>
             </a>
         </div>
 
@@ -14,7 +14,7 @@
             <li class="nav-item">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <span class="nav-icon">
-                        <i class="ti ti-files" style="font-size: 20px;"></i>
+                        <i class="ti ti-building-store text-success" style="font-size: 20px;"></i>
                     </span>
                     <span class="text">Dashboard</span>
                 </a>

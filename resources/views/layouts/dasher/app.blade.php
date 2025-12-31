@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Dasher - Admin Dashboard')</title>
-    <meta name="description" content="@yield('meta_description', 'Dasher - Responsive Bootstrap 5 Admin Dashboard')">
+    <meta name="viewport content="width=device-width, initial-scale=1">
+    <title>@yield('title', 'UMKM - Admin Dashboard')</title>
+    <meta name="description" content="@yield('meta_description', 'UMKM - Admin Dashboard')">
     
     @include('layouts.dasher.css')
 </head>

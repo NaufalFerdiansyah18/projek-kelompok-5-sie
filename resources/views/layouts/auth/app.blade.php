@@ -20,7 +20,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - Dasher</title>
+    <title>Login - UMKM</title>
     @include('layouts.dasher.css')
 </head>
 <body style="background-color: var(--dasher-primary);">

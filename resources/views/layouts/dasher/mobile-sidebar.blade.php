@@ -3,8 +3,8 @@
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasSidebarLabel">
             <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
-                <img src="{{ asset('assets-dasher/images/brand/logo/logo-icon.svg') }}" alt="Dasher" height="32">
-                <span class="fw-bold fs-4">Dasher</span>
+                <i class="ti ti-building-store text-success" style="font-size: 32px;"></i>
+                <span class="fw-bold fs-4">UMKM</span>
             </a>
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -15,7 +15,7 @@
             <!-- Dashboard -->
             <li class="nav-item">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                    <i class="ti ti-files me-2" style="font-size: 20px;"></i>
+                    <i class="ti ti-building-store text-success me-2" style="font-size: 20px;"></i>
                     <span>Dashboard</span>
                 </a>
             </li>

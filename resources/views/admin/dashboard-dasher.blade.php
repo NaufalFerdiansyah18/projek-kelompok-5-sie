@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="mb-6">
-        <h1 class="h3 mb-2">Dashboard</h1>
-        <p class="text-muted">Selamat datang di Dashboard Admin Dasher UI</p>
+        <h1 class="h3 mb-2"><i class="ti ti-building-store text-success"></i> Dashboard</h1>
+        <p class="text-muted">Selamat datang di Dashboard Admin UMKM</p>
     </div>
 
     <!-- Stats Cards -->
