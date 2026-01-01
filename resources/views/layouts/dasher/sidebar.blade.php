@@ -14,7 +14,7 @@
             <li class="nav-item">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <span class="nav-icon">
-                        <i class="ti ti-building-store text-success" style="font-size: 20px;"></i>
+                        <i class="ti ti-home" style="font-size: 20px;"></i>
                     </span>
                     <span class="text">Dashboard</span>
                 </a>

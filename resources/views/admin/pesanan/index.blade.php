@@ -81,9 +81,21 @@
                             <td>Rp {{ number_format($p->total, 0, ',', '.') }}</td>
                             <td>{{ $p->created_at->format('d M Y') }}</td>
                             <td>
-                                <a href="{{ route('admin.pesanan.show', $p->pesanan_id) }}" class="btn btn-sm btn-outline-primary">
-                                    <i class="ti ti-eye me-1"></i> Detail
-                                </a>
+                                <div class="d-flex gap-2">
+                                    <a href="{{ route('admin.pesanan.show', $p->pesanan_id) }}" class="btn btn-sm btn-info">
+                                        <i class="ti ti-eye"></i>
+                                    </a>
+                                    <a href="{{ route('admin.pesanan.edit', $p->pesanan_id) }}" class="btn btn-sm btn-warning">
+                                        <i class="ti ti-edit"></i>
+                                    </a>
+                                    <form action="{{ route('admin.pesanan.destroy', $p->pesanan_id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pesanan ini?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="ti ti-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @empty

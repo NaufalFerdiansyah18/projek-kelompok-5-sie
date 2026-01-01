@@ -60,7 +60,7 @@ Route::group(['middleware' => ['checkrole:Super Admin']], function () {
         Route::resource('pelanggan', PelangganController::class);
 
         // Resource pesanan & ulasan produk (admin only)
-        Route::resource('pesanan', PesananController::class)->only(['index','create','store','show']);
+        Route::resource('pesanan', PesananController::class);
         Route::resource('ulasan', UlasanProdukController::class)->only(['index','create','store']);
 
         // Pindahkan resource UMKM, User, Produk, Warga ke dalam admin

@@ -330,6 +330,19 @@
             margin-left: 0;
         }
     }
+
+    .logout-link {
+        color: #dc3545;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+    
+    .logout-link:hover {
+        background-color: #fee2e2;
+        color: #b91c1c;
+    }
 </style>
 
 @stack('styles')

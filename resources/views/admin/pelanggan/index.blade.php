@@ -43,7 +43,7 @@
                         <option value="Perempuan" @selected(($filters['gender'] ?? '') === 'Perempuan')>Perempuan</option>
                     </select>
                 </div>
-                <div class="col-md-3 col-lg-2 d-flex gap-2">
+               <div class="col-md-3 d-flex gap-2">
                     <button type="submit" class="btn btn-success flex-fill">
                         <i class="ti ti-filter me-1"></i> Terapkan
                     </button>
@@ -152,17 +152,17 @@
         background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
         border-top: 2px solid #059669;
     }
-    
+
     .table-footer td {
         color: #065f46;
         font-weight: 500;
     }
-    
+
     .table thead {
         background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         border-bottom: 2px solid #059669;
     }
-    
+
     .table thead th {
         color: #065f46;
         font-weight: 600;

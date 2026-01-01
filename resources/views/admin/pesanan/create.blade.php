@@ -70,7 +70,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label">Metode Bayar</label>
-                                    <input type="text" name="metode_bayar" class="form-control" placeholder="Transfer / COD">
+                                    <input type="text" name="metode_bayar" class="form-control" placeholder="Cash / Non Cash">
                                 </div>
                             </div>
                         </div>

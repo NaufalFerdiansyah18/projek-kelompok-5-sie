@@ -99,4 +99,33 @@ class PesananController extends Controller
         $data['pesanan'] = Pesanan::with(['warga', 'details.produk'])->findOrFail($id);
         return view('admin.pesanan.show', $data);
     }
+
+    public function edit(string $id)
+    {
+        $pesanan = Pesanan::findOrFail($id);
+        return view('admin.pesanan.edit', compact('pesanan'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'status' => 'required|string|in:baru,diproses,selesai,dibatalkan',
+        ]);
+
+        $pesanan = Pesanan::findOrFail($id);
+        $pesanan->status = $request->status;
+        $pesanan->save();
+
+        return redirect()->route('admin.pesanan.index')->with('success', 'Status pesanan berhasil diperbarui.');
+    }
+
+    public function destroy(string $id)
+    {
+        $pesanan = Pesanan::findOrFail($id);
+        // Hapus detail pesanan terlebih dahulu jika tidak ada cascade delete di database
+        $pesanan->details()->delete();
+        $pesanan->delete();
+
+        return redirect()->route('admin.pesanan.index')->with('success', 'Pesanan berhasil dihapus.');
+    }
 }
