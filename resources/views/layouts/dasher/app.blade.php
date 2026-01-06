@@ -26,8 +26,6 @@
         <div class="custom-container py-4">
             @yield('content')
         </div>
-        
-        @include('layouts.dasher.footer')
     </div>
     
     @include('layouts.dasher.js')
