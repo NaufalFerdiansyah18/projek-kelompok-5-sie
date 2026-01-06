@@ -51,7 +51,6 @@
                             Remember me
                         </label>
                     </div>
-                    <div><a href="./forgot-password.html" class="small text-right">Lost password?</a></div>
                 </div>
             </div>
             <div class="d-grid">
@@ -79,12 +78,6 @@
                     </path>
                 </svg>
             </a>
-        </div>
-        <div class="d-flex justify-content-center align-items-center mt-4">
-            <span class="fw-normal">
-                Not registered?
-                <a href="{{ route('auth.register') }}" class="fw-bold">Create account</a>
-            </span>
         </div>
     </div>
 @endsection

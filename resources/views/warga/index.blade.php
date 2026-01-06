@@ -66,8 +66,8 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>ID</th>
                         <th>No KTP</th>
+                        <th>ID</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
                         <th>Agama</th>

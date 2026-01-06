@@ -13,29 +13,6 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function register()
-    {
-        return view('auth.register');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'first_name' => 'required|string|max:255',
-            'email'      => 'required|email|unique:users,email',
-            'password'   => 'required|min:6|confirmed',
-        ]);
-
-        User::create([
-            'first_name' => $request->first_name,
-            'email'      => $request->email,
-            'password'   => Hash::make($request->password),
-            'role'       => 'Super Admin',
-        ]);
-
-        return redirect()->route('auth')->with('success', 'Registrasi berhasil! Silakan login.');
-    }
-
     public function login(Request $request)
     {
         $request->validate([

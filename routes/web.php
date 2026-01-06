@@ -39,8 +39,6 @@ Route::post('question/store', [QuestionController::class, 'store'])->name('quest
 
 Route::get('auth', [AuthController::class, 'index'])->name('auth');
 Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('auth/register', [AuthController::class, 'register'])->name('auth.register');
-Route::post('auth/store', [AuthController::class, 'store'])->name('auth.store');
 Route::get('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 

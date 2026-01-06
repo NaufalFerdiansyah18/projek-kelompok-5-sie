@@ -39,12 +39,12 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="id" class="form-label">ID</label>
+                                <label for="id" class="form-label">No KTP</label>
                                 <input type="text" class="form-control" id="id" name="id"
                                        value="{{ old('id', $warga->id) }}" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="no_ktp" class="form-label">No KTP</label>
+                                <label for="no_ktp" class="form-label">ID</label>
                                 <input type="text" class="form-control" id="no_ktp" name="no_ktp"
                                        value="{{ old('no_ktp', $warga->no_ktp) }}" required>
                             </div>

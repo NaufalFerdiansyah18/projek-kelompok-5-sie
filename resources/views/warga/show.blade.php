@@ -35,11 +35,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h6 class="text-muted">ID</h6>
+                            <h6 class="text-muted">No KTP</h6>
                             <p class="fw-bold">{{ $warga->id ?? '-' }}</p>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <h6 class="text-muted">No KTP</h6>
+                            <h6 class="text-muted">ID</h6>
                             <p class="fw-bold">{{ $warga->no_ktp }}</p>
                         </div>
 

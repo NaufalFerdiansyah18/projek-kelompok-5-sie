@@ -56,6 +56,9 @@ class WargaController extends Controller
             'pekerjaan' => 'nullable|string|max:100',
             'telp' => 'nullable|string|max:20',
             'email' => 'nullable|email|unique:warga,email|max:100',
+        ], [], [
+            'id' => 'No KTP',
+            'no_ktp' => 'ID',
         ]);
 
         Warga::create($request->all());
@@ -97,6 +100,9 @@ class WargaController extends Controller
             'pekerjaan' => 'nullable|string|max:100',
             'telp' => 'nullable|string|max:20',
             'email' => 'nullable|email|unique:warga,email,' . $warga->warga_id . ',warga_id|max:100',
+        ], [], [
+            'id' => 'No KTP',
+            'no_ktp' => 'ID',
         ]);
 
         $warga->update($request->all());

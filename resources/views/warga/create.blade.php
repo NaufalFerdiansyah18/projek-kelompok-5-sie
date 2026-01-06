@@ -39,7 +39,7 @@
                         <div class="row">
                             {{-- ID --}}
                             <div class="col-md-6 mb-3">
-                                <label for="id" class="form-label">ID</label>
+                                <label for="id" class="form-label">No KTP</label>
                                 <input type="text" name="id" id="id" class="form-control @error('id') is-invalid @enderror" value="{{ old('id') }}" required>
                                 @error('id')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -48,7 +48,7 @@
 
                             {{-- No KTP --}}
                             <div class="col-md-6 mb-3">
-                                <label for="no_ktp" class="form-label">No KTP</label>
+                                <label for="no_ktp" class="form-label">ID</label>
                                 <input type="text" name="no_ktp" id="no_ktp" class="form-control @error('no_ktp') is-invalid @enderror" value="{{ old('no_ktp') }}" required>
                                 @error('no_ktp')
                                     <div class="invalid-feedback">{{ $message }}</div>
