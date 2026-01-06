@@ -15,6 +15,7 @@ class Warga extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'id',
         'no_ktp',
         'nama',
         'jenis_kelamin',
@@ -25,6 +26,7 @@ class Warga extends Model
     ];
 
     protected array $searchableColumns = [
+        'id',
         'no_ktp',
         'nama',
         'pekerjaan',

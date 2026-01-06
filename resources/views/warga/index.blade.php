@@ -66,6 +66,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>ID</th>
                         <th>No KTP</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
@@ -80,6 +81,7 @@
                     @forelse($warga as $index => $item)
                     <tr>
                         <td>{{ $warga->firstItem() + $index }}</td>
+                        <td>{{ $item->id ?? '-' }}</td>
                         <td>{{ $item->no_ktp }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>

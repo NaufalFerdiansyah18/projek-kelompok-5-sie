@@ -48,6 +48,7 @@ class WargaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'id' => 'required|unique:warga,id|max:20',
             'no_ktp' => 'required|unique:warga,no_ktp|max:20',
             'nama' => 'required|string|max:100',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
@@ -88,6 +89,7 @@ class WargaController extends Controller
         $warga = Warga::findOrFail($id);
 
         $request->validate([
+            'id' => 'required|max:20|unique:warga,id,' . $warga->warga_id . ',warga_id',
             'no_ktp' => 'required|max:20|unique:warga,no_ktp,' . $warga->warga_id . ',warga_id',
             'nama' => 'required|string|max:100',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
