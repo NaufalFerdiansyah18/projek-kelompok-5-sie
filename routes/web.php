@@ -50,8 +50,6 @@ Route::group(['middleware' => ['checkrole:Super Admin']], function () {
 
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-        Route::resource('pelanggan', PelangganController::class);
-
         Route::resource('pesanan', PesananController::class);
         Route::resource('ulasan', UlasanProdukController::class)->only(['index','create','store']);
 
@@ -63,4 +61,3 @@ Route::group(['middleware' => ['checkrole:Super Admin']], function () {
     });
 
 });
-

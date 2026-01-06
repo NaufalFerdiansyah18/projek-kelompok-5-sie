@@ -20,15 +20,7 @@
                 </a>
             </li>
 
-            <!-- Pelanggan -->
-            <li class="nav-item">
-                <a href="{{ route('admin.pelanggan.index') }}" class="nav-link {{ request()->routeIs('admin.pelanggan.*') ? 'active' : '' }}">
-                    <span class="nav-icon">
-                        <i class="ti ti-users" style="font-size: 20px;"></i>
-                    </span>
-                    <span class="text">Pelanggan</span>
-                </a>
-            </li>
+            <!-- Pelanggan removed -->
 
             <!-- UMKM -->
             <li class="nav-item">
