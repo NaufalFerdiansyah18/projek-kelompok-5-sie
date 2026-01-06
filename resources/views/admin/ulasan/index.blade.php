@@ -9,11 +9,6 @@
                 <h1 class="h3 mb-2">Ulasan Produk</h1>
                 <p class="text-muted mb-0">Kelola ulasan produk dari warga</p>
             </div>
-            <div>
-                <a href="{{ route('admin.ulasan.create') }}" class="btn btn-primary">
-                    <i class="ti ti-plus me-2"></i> Tambah Ulasan
-                </a>
-            </div>
         </div>
     </div>
 

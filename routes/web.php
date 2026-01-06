@@ -36,34 +36,25 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('question/store', [QuestionController::class, 'store'])->name('question.store');
 
-// ================================
-// 🔐 ROUTE LOGIN
-// ================================
+
 Route::get('auth', [AuthController::class, 'index'])->name('auth');
 Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('auth/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('auth/store', [AuthController::class, 'store'])->name('auth.store');
 Route::get('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-// ================================
-// 🔥 ADMIN AREA (PROTECTED)
-// Hanya Super Admin yang bisa mengakses dashboard
-// ================================
+
 Route::group(['middleware' => ['checkrole:Super Admin']], function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
 
-        // 🔒 Dashboard hanya untuk Super Admin
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-        // Resource pelanggan (jika perlu ikut dilindungi)
         Route::resource('pelanggan', PelangganController::class);
 
-        // Resource pesanan & ulasan produk (admin only)
         Route::resource('pesanan', PesananController::class);
         Route::resource('ulasan', UlasanProdukController::class)->only(['index','create','store']);
 
-        // Pindahkan resource UMKM, User, Produk, Warga ke dalam admin
         Route::resource('umkm', UmkmController::class);
         Route::resource('user', UserController::class);
         Route::resource('produk', ProdukController::class);
@@ -73,4 +64,3 @@ Route::group(['middleware' => ['checkrole:Super Admin']], function () {
 
 });
 
-// Non-admin resources dihapus agar semua akses berada di bawah admin
