@@ -4,6 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+class Umkm extends Model
+{
+    protected $table = 'produk';
+    protected $primaryKey = 'produk_id';
+    protected $fillable = [
+        'name',
+        'price',
+        'description',
+    ];
+}
 class Produk extends Model
 {
     protected $table = 'produk';
@@ -27,4 +38,5 @@ class Produk extends Model
     {
         return $this->hasMany(Media::class, 'produk_id', 'produk_id');
     }
+
 }
